@@ -4,19 +4,44 @@ cimport cython
 from cpython.mem cimport PyMem_Free, PyMem_Malloc
 from libc.stdint cimport uint8_t, uint32_t
 
-from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path,rucfs_inode_name,rucfs_open_directory,rucfs_path_to,
-                                            rucfs_fclose, rucfs_file_t,rucfs_open_symlink,rucfs_inode_symlink_t,rucfs_exist,
-                                            rucfs_fopen, rucfs_inode_directory,rucfs_inode_directory_t,
-                                            rucfs_inode_file,rucfs_inode_t,
-                                            rucfs_inode_symlink, rucfs_ok,rucfs_errcode_t,
-                                            rucfs_path_enum_t,rucfs_load,
-                                            rucfs_superblock_t,rucfs_normalize_path)
+from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path,
+                                            rucfs_errcode_t, rucfs_exist,
+                                            rucfs_fclose, rucfs_file_t,
+                                            rucfs_fopen, rucfs_inode_directory,
+                                            rucfs_inode_directory_t,
+                                            rucfs_inode_file, rucfs_inode_name,
+                                            rucfs_inode_symlink,
+                                            rucfs_inode_symlink_t,
+                                            rucfs_inode_t, rucfs_inode_type_t,
+                                            rucfs_load, rucfs_normalize_path,
+                                            rucfs_ok, rucfs_open_directory,
+                                            rucfs_open_symlink,
+                                            rucfs_path_enum_t, rucfs_path_to,
+                                            rucfs_superblock_t)
 
+INODE_DIRECTORY =  rucfs_inode_directory
+INODE_FILE = rucfs_inode_file
+INODE_SYMLINK = rucfs_inode_symlink
 
+cdef inline str path_to_str(rucfs_path_enum_t* p):
+    """
+    directory or file or symlink
+    """
+    if p.type == rucfs_inode_directory:
+        return "directory"
+    elif p.type == rucfs_inode_file:
+        return "file"
+    elif  p.type == rucfs_inode_symlink:
+        return "symlink"
+
+# @cython.internal  # uncomment this to
 @cython.final
 @cython.freelist(8)
 @cython.no_gc
 cdef class SuperBlock:
+    """
+    internal use
+    """
     cdef rucfs_superblock_t * _block
 
     def __cinit__(self):
@@ -104,21 +129,33 @@ cdef class Path:
         """
         directory or file or symlink
         """
-        if self.path.type == rucfs_inode_directory:
-            return "directory"
-        elif    self.path.type == rucfs_inode_file:
-            return "file"
-        elif  self.path.type == rucfs_inode_symlink:
-            return "symlink"
+        return self.path.type
+
 @cython.final
 @cython.freelist(8)
 @cython.no_gc
 cdef class Inode:
-    cdef rucfs_inode_t *node
+    cdef:
+        rucfs_inode_t *node
+        int own
+    def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):
+        if own:
+            self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+            if not self.node:
+                raise MemoryError
+            self.node.type = type_
+            self.node.name_offset = name_offset
+            self.own = 1
+        else:
+            self.own = 0
+
+    def __dealloc__(self):
+        if self.own and self.node:
+            PyMem_Free(self.node)
 
     @staticmethod
     cdef inline Inode from_ptr(rucfs_inode_t *node):
-        cdef Inode self = Inode.__new__(Inode)
+        cdef Inode self = Inode.__new__(Inode, own = 0)
         self.node = node
         return self
 
@@ -127,25 +164,41 @@ cdef class Inode:
         """
         directory or file or symlink
         """
-        if self.node.type == rucfs_inode_directory:
-            return "directory"
-        elif self.node.type == rucfs_inode_file:
-            return "file"
-        elif self.node.type == rucfs_inode_symlink:
-            return "symlink"
+        return self.node.type
 
     @property
     def name_offset(self):
         return self.node.name_offset
+
+
 @cython.final
 @cython.freelist(8)
 @cython.no_gc
 cdef class Directory:
-    cdef rucfs_inode_directory_t* d
+    cdef:
+        rucfs_inode_directory_t* d
+        int own
+
+    def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):
+        if own:
+            self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+            if not self.d:
+                raise MemoryError
+            (<rucfs_inode_t *> self.d).type = type_
+            (<rucfs_inode_t *> self.d).name_offset = name_offset
+            self.d.item_count = item_count
+            self.d.ref_inode_offset = ref_inode_offset
+            self.own = 1
+        else:
+            self.own = 0
+
+    def __dealloc__(self):
+        if self.own and self.d:
+            PyMem_Free(self.d)
 
     @staticmethod
     cdef inline Directory from_ptr(rucfs_inode_directory_t* d):
-        cdef Directory self = Directory.__new__(Directory)
+        cdef Directory self = Directory.__new__(Directory, own = 0)
         self.d = d
         return self
 
@@ -165,12 +218,40 @@ cdef class Directory:
 @cython.freelist(8)
 @cython.no_gc
 cdef class Symlink:
-    cdef rucfs_inode_symlink_t* _link
+    cdef:
+        rucfs_inode_symlink_t* _link
+        int own   # own this ptr (not from_ptr)
+
+    def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):
+        if own:   # user created struct
+            self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+            if not self._link:
+                raise MemoryError
+            (<rucfs_inode_t*>self._link).type = type_
+            (<rucfs_inode_t *> self._link).name_offset = name_offset
+            self._link.ref_inode_offset = ref_inode_offset
+            self.own = 1
+        else:  # from_ptr called
+            self.own = 0
+
+
+    def __dealloc__(self):
+        if self.own and self._link:
+            PyMem_Free(self._link)
+
     @staticmethod
     cdef inline Symlink from_ptr(rucfs_inode_symlink_t* link):
-        cdef Symlink self =Symlink.__new__(Symlink)
+        cdef Symlink self =Symlink.__new__(Symlink, own = 0)
         self._link = link
         return self
+
+    @property
+    def common(self):
+        return Inode.from_ptr(&self._link.common)
+
+    @property
+    def ref_inode_offset(self):
+        return self._link.ref_inode_offset
 
 @cython.final
 @cython.freelist(8)

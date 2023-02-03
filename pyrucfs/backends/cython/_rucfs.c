@@ -1098,12 +1098,12 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":19
+/* "pyrucfs/backends/cython/_rucfs.pyx":40
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class SuperBlock:             # <<<<<<<<<<<<<<
- *     cdef rucfs_superblock_t * _block
- * 
+ *     """
+ *     internal use
  */
 struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock {
   PyObject_HEAD
@@ -1111,7 +1111,7 @@ struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock {
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":35
+/* "pyrucfs/backends/cython/_rucfs.pyx":59
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class File:             # <<<<<<<<<<<<<<
@@ -1128,7 +1128,7 @@ struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File {
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":89
+/* "pyrucfs/backends/cython/_rucfs.pyx":113
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Path:             # <<<<<<<<<<<<<<
@@ -1142,49 +1142,52 @@ struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path {
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":116
+/* "pyrucfs/backends/cython/_rucfs.pyx":136
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Inode:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_t *node
- * 
+ *     cdef:
+ *         rucfs_inode_t *node
  */
 struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode {
   PyObject_HEAD
   struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_vtab;
   rucfs_inode_t *node;
+  int own;
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":143
+/* "pyrucfs/backends/cython/_rucfs.pyx":176
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Directory:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_directory_t* d
- * 
+ *     cdef:
+ *         rucfs_inode_directory_t* d
  */
 struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory {
   PyObject_HEAD
   struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_vtab;
   rucfs_inode_directory_t *d;
+  int own;
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":167
+/* "pyrucfs/backends/cython/_rucfs.pyx":219
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Symlink:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_symlink_t* _link
- *     @staticmethod
+ *     cdef:
+ *         rucfs_inode_symlink_t* _link
  */
 struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink {
   PyObject_HEAD
   struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_vtab;
   rucfs_inode_symlink_t *_link;
+  int own;
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":178
+/* "pyrucfs/backends/cython/_rucfs.pyx":258
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Context:             # <<<<<<<<<<<<<<
@@ -1198,7 +1201,7 @@ struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context {
 };
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":235
+/* "pyrucfs/backends/cython/_rucfs.pyx":315
  *         return  <bytes>rucfs_inode_name(self._ctx, node.node)
  * 
  *     def enumerate_path(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -1297,7 +1300,7 @@ struct __pyx_memoryviewslice_obj {
 
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":35
+/* "pyrucfs/backends/cython/_rucfs.pyx":59
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class File:             # <<<<<<<<<<<<<<
@@ -1314,7 +1317,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
 static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *, int __pyx_skip_dispatch);
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":89
+/* "pyrucfs/backends/cython/_rucfs.pyx":113
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Path:             # <<<<<<<<<<<<<<
@@ -1329,12 +1332,12 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_vt
 static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4Path_from_ptr(rucfs_path_enum_t *);
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":116
+/* "pyrucfs/backends/cython/_rucfs.pyx":136
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Inode:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_t *node
- * 
+ *     cdef:
+ *         rucfs_inode_t *node
  */
 
 struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Inode {
@@ -1344,12 +1347,12 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v
 static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(rucfs_inode_t *);
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":143
+/* "pyrucfs/backends/cython/_rucfs.pyx":176
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Directory:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_directory_t* d
- * 
+ *     cdef:
+ *         rucfs_inode_directory_t* d
  */
 
 struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Directory {
@@ -1359,12 +1362,12 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Directory *__p
 static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_9Directory_from_ptr(rucfs_inode_directory_t *);
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":167
+/* "pyrucfs/backends/cython/_rucfs.pyx":219
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Symlink:             # <<<<<<<<<<<<<<
- *     cdef rucfs_inode_symlink_t* _link
- *     @staticmethod
+ *     cdef:
+ *         rucfs_inode_symlink_t* _link
  */
 
 struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Symlink {
@@ -1374,7 +1377,7 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx
 static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_from_ptr(rucfs_inode_symlink_t *);
 
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":178
+/* "pyrucfs/backends/cython/_rucfs.pyx":258
  * @cython.freelist(8)
  * @cython.no_gc
  * cdef class Context:             # <<<<<<<<<<<<<<
@@ -2065,8 +2068,17 @@ __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
                                  size_t sizeof_dtype, int contig_flag,
                                  int dtype_is_object);
 
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint8_t(uint8_t value);
+
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE uint8_t __Pyx_PyInt_As_uint8_t(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE uint32_t __Pyx_PyInt_As_uint32_t(PyObject *);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value);
@@ -2223,6 +2235,7 @@ static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
 static PyTypeObject *__pyx_memoryviewslice_type = 0;
+static rucfs_inode_symlink_t __pyx_v_7pyrucfs_8backends_6cython_6_rucfs_l;
 static PyObject *generic = 0;
 static PyObject *strided = 0;
 static PyObject *indirect = 0;
@@ -2288,6 +2301,7 @@ static const char __pyx_k_id[] = "id";
 static const char __pyx_k_buf[] = "buf";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
+static const char __pyx_k_own[] = "own";
 static const char __pyx_k_File[] = "File";
 static const char __pyx_k_Path[] = "Path";
 static const char __pyx_k_args[] = "args";
@@ -2308,6 +2322,7 @@ static const char __pyx_k_size[] = "size";
 static const char __pyx_k_step[] = "step";
 static const char __pyx_k_stop[] = "stop";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_type[] = "type_";
 static const char __pyx_k_ASCII[] = "ASCII";
 static const char __pyx_k_Inode[] = "Inode";
 static const char __pyx_k_class[] = "__class__";
@@ -2348,24 +2363,30 @@ static const char __pyx_k_directory[] = "directory";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
+static const char __pyx_k_INODE_FILE[] = "INODE_FILE";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_SuperBlock[] = "SuperBlock";
 static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_item_count[] = "item_count";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
+static const char __pyx_k_name_offset[] = "name_offset";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_staticmethod[] = "staticmethod";
 static const char __pyx_k_stringsource[] = "stringsource";
+static const char __pyx_k_INODE_SYMLINK[] = "INODE_SYMLINK";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_enumerate_path[] = "enumerate_path";
+static const char __pyx_k_INODE_DIRECTORY[] = "INODE_DIRECTORY";
 static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
 static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_ref_inode_offset[] = "ref_inode_offset";
 static const char __pyx_k_FileNotFoundError[] = "FileNotFoundError";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
@@ -2382,7 +2403,6 @@ static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cyt
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
 static const char __pyx_k_pyrucfs_backends_cython__rucfs[] = "pyrucfs.backends.cython._rucfs";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
-static const char __pyx_k_self_d_cannot_be_converted_to_a[] = "self.d cannot be converted to a Python object for pickling";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
 static const char __pyx_k_Cannot_assign_to_read_only_memor[] = "Cannot assign to read-only memoryview";
@@ -2396,9 +2416,7 @@ static const char __pyx_k_Unable_to_convert_item_to_object[] = "Unable to conver
 static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing extents in dimension %d (got %d and %d)";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static const char __pyx_k_pyrucfs_backends_cython__rucfs_p[] = "pyrucfs\\backends\\cython\\_rucfs.pyx";
-static const char __pyx_k_self__link_cannot_be_converted_t[] = "self._link cannot be converted to a Python object for pickling";
 static const char __pyx_k_self_file_cannot_be_converted_to[] = "self.file cannot be converted to a Python object for pickling";
-static const char __pyx_k_self_node_cannot_be_converted_to[] = "self.node cannot be converted to a Python object for pickling";
 static const char __pyx_k_self_path_cannot_be_converted_to[] = "self.path cannot be converted to a Python object for pickling";
 static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
 static PyObject *__pyx_n_s_ASCII;
@@ -2414,6 +2432,9 @@ static PyObject *__pyx_n_s_Ellipsis;
 static PyObject *__pyx_kp_s_Empty_shape_tuple_for_cython_arr;
 static PyObject *__pyx_n_s_File;
 static PyObject *__pyx_n_s_FileNotFoundError;
+static PyObject *__pyx_n_s_INODE_DIRECTORY;
+static PyObject *__pyx_n_s_INODE_FILE;
+static PyObject *__pyx_n_s_INODE_SYMLINK;
 static PyObject *__pyx_n_s_IOError;
 static PyObject *__pyx_kp_s_Incompatible_checksums_0x_x_vs_0;
 static PyObject *__pyx_n_s_IndexError;
@@ -2467,6 +2488,7 @@ static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
 static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_item_count;
 static PyObject *__pyx_n_s_itemsize;
 static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
 static PyObject *__pyx_n_s_load;
@@ -2475,10 +2497,12 @@ static PyObject *__pyx_n_s_memview;
 static PyObject *__pyx_n_s_mode;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_name_2;
+static PyObject *__pyx_n_s_name_offset;
 static PyObject *__pyx_n_s_ndim;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_obj;
+static PyObject *__pyx_n_s_own;
 static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pyrucfs_backends_cython__rucfs;
@@ -2495,12 +2519,10 @@ static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_ref_inode_offset;
 static PyObject *__pyx_n_s_s;
 static PyObject *__pyx_n_s_self;
-static PyObject *__pyx_kp_s_self__link_cannot_be_converted_t;
-static PyObject *__pyx_kp_s_self_d_cannot_be_converted_to_a;
 static PyObject *__pyx_kp_s_self_file_cannot_be_converted_to;
-static PyObject *__pyx_kp_s_self_node_cannot_be_converted_to;
 static PyObject *__pyx_kp_s_self_path_cannot_be_converted_to;
 static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_setstate;
@@ -2516,9 +2538,11 @@ static PyObject *__pyx_kp_s_strided_and_direct_or_indirect;
 static PyObject *__pyx_kp_s_strided_and_indirect;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_struct;
+static PyObject *__pyx_n_s_symlink;
 static PyObject *__pyx_n_u_symlink;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_throw;
+static PyObject *__pyx_n_s_type;
 static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
@@ -2540,17 +2564,25 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4name___get__
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4type___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, int __pyx_v_own); /* proto */
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4type___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_11name_offset___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, uint32_t __pyx_v_item_count, uint32_t __pyx_v_ref_inode_offset, int __pyx_v_own); /* proto */
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6common___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_10item_count___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_16ref_inode_offset___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, uint32_t __pyx_v_ref_inode_offset, int __pyx_v_own); /* proto */
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *__pyx_v_self); /* proto */
 static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_4fopen(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *__pyx_v_self, __Pyx_memviewslice __pyx_v_path); /* proto */
@@ -2625,20 +2657,20 @@ static PyObject *__pyx_int_112105877;
 static PyObject *__pyx_int_136983863;
 static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
+static rucfs_inode_type_t __pyx_k__7;
+static rucfs_inode_type_t __pyx_k__10;
+static rucfs_inode_type_t __pyx_k__13;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__5;
 static PyObject *__pyx_tuple__6;
-static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__8;
 static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_slice__29;
-static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_slice__32;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__12;
-static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__16;
@@ -2654,22 +2686,148 @@ static PyObject *__pyx_tuple__25;
 static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__28;
+static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__30;
 static PyObject *__pyx_tuple__31;
-static PyObject *__pyx_tuple__32;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__34;
+static PyObject *__pyx_tuple__35;
 static PyObject *__pyx_tuple__36;
 static PyObject *__pyx_tuple__37;
-static PyObject *__pyx_tuple__38;
 static PyObject *__pyx_tuple__39;
 static PyObject *__pyx_tuple__40;
 static PyObject *__pyx_tuple__41;
-static PyObject *__pyx_codeobj__35;
-static PyObject *__pyx_codeobj__42;
+static PyObject *__pyx_tuple__42;
+static PyObject *__pyx_tuple__43;
+static PyObject *__pyx_tuple__44;
+static PyObject *__pyx_codeobj__38;
+static PyObject *__pyx_codeobj__45;
 /* Late includes */
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":22
+/* "pyrucfs/backends/cython/_rucfs.pyx":25
+ * INODE_SYMLINK = rucfs_inode_symlink
+ * 
+ * cdef inline str path_to_str(rucfs_path_enum_t* p):             # <<<<<<<<<<<<<<
+ *     """
+ *     directory or file or symlink
+ */
+
+static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_path_to_str(rucfs_path_enum_t *__pyx_v_p) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  __Pyx_RefNannySetupContext("path_to_str", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":29
+ *     directory or file or symlink
+ *     """
+ *     if p.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
+ *         return "directory"
+ *     elif p.type == rucfs_inode_file:
+ */
+  __pyx_t_1 = ((__pyx_v_p->type == rucfs_inode_directory) != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":30
+ *     """
+ *     if p.type == rucfs_inode_directory:
+ *         return "directory"             # <<<<<<<<<<<<<<
+ *     elif p.type == rucfs_inode_file:
+ *         return "file"
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_n_u_directory);
+    __pyx_r = __pyx_n_u_directory;
+    goto __pyx_L0;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":29
+ *     directory or file or symlink
+ *     """
+ *     if p.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
+ *         return "directory"
+ *     elif p.type == rucfs_inode_file:
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":31
+ *     if p.type == rucfs_inode_directory:
+ *         return "directory"
+ *     elif p.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
+ *         return "file"
+ *     elif  p.type == rucfs_inode_symlink:
+ */
+  __pyx_t_1 = ((__pyx_v_p->type == rucfs_inode_file) != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":32
+ *         return "directory"
+ *     elif p.type == rucfs_inode_file:
+ *         return "file"             # <<<<<<<<<<<<<<
+ *     elif  p.type == rucfs_inode_symlink:
+ *         return "symlink"
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_n_u_file);
+    __pyx_r = __pyx_n_u_file;
+    goto __pyx_L0;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":31
+ *     if p.type == rucfs_inode_directory:
+ *         return "directory"
+ *     elif p.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
+ *         return "file"
+ *     elif  p.type == rucfs_inode_symlink:
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":33
+ *     elif p.type == rucfs_inode_file:
+ *         return "file"
+ *     elif  p.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
+ *         return "symlink"
+ * 
+ */
+  __pyx_t_1 = ((__pyx_v_p->type == rucfs_inode_symlink) != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":34
+ *         return "file"
+ *     elif  p.type == rucfs_inode_symlink:
+ *         return "symlink"             # <<<<<<<<<<<<<<
+ * 
+ * # @cython.internal  # uncomment this to
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_n_u_symlink);
+    __pyx_r = __pyx_n_u_symlink;
+    goto __pyx_L0;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":33
+ *     elif p.type == rucfs_inode_file:
+ *         return "file"
+ *     elif  p.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
+ *         return "symlink"
+ * 
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":25
+ * INODE_SYMLINK = rucfs_inode_symlink
+ * 
+ * cdef inline str path_to_str(rucfs_path_enum_t* p):             # <<<<<<<<<<<<<<
+ *     """
+ *     directory or file or symlink
+ */
+
+  /* function exit code */
+  __pyx_r = ((PyObject*)Py_None); __Pyx_INCREF(Py_None);
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":46
  *     cdef rucfs_superblock_t * _block
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -2702,7 +2860,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock___cinit__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":23
+  /* "pyrucfs/backends/cython/_rucfs.pyx":47
  * 
  *     def __cinit__(self):
  *         self._block = <rucfs_superblock_t *> PyMem_Malloc(sizeof(rucfs_superblock_t))             # <<<<<<<<<<<<<<
@@ -2711,7 +2869,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock___cinit__(st
  */
   __pyx_v_self->_block = ((rucfs_superblock_t *)PyMem_Malloc((sizeof(rucfs_superblock_t))));
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":24
+  /* "pyrucfs/backends/cython/_rucfs.pyx":48
  *     def __cinit__(self):
  *         self._block = <rucfs_superblock_t *> PyMem_Malloc(sizeof(rucfs_superblock_t))
  *         if not self._block:             # <<<<<<<<<<<<<<
@@ -2721,16 +2879,16 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock___cinit__(st
   __pyx_t_1 = ((!(__pyx_v_self->_block != 0)) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":25
+    /* "pyrucfs/backends/cython/_rucfs.pyx":49
  *         self._block = <rucfs_superblock_t *> PyMem_Malloc(sizeof(rucfs_superblock_t))
  *         if not self._block:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-    PyErr_NoMemory(); __PYX_ERR(0, 25, __pyx_L1_error)
+    PyErr_NoMemory(); __PYX_ERR(0, 49, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":24
+    /* "pyrucfs/backends/cython/_rucfs.pyx":48
  *     def __cinit__(self):
  *         self._block = <rucfs_superblock_t *> PyMem_Malloc(sizeof(rucfs_superblock_t))
  *         if not self._block:             # <<<<<<<<<<<<<<
@@ -2739,7 +2897,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock___cinit__(st
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":22
+  /* "pyrucfs/backends/cython/_rucfs.pyx":46
  *     cdef rucfs_superblock_t * _block
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -2758,7 +2916,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock___cinit__(st
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":27
+/* "pyrucfs/backends/cython/_rucfs.pyx":51
  *             raise MemoryError
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2782,7 +2940,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_2__dealloc_
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":28
+  /* "pyrucfs/backends/cython/_rucfs.pyx":52
  * 
  *     def __dealloc__(self):
  *         if self._block:             # <<<<<<<<<<<<<<
@@ -2792,7 +2950,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_2__dealloc_
   __pyx_t_1 = (__pyx_v_self->_block != 0);
   if (__pyx_t_1) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":29
+    /* "pyrucfs/backends/cython/_rucfs.pyx":53
  *     def __dealloc__(self):
  *         if self._block:
  *             PyMem_Free(self._block)             # <<<<<<<<<<<<<<
@@ -2801,7 +2959,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_2__dealloc_
  */
     PyMem_Free(__pyx_v_self->_block);
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":30
+    /* "pyrucfs/backends/cython/_rucfs.pyx":54
  *         if self._block:
  *             PyMem_Free(self._block)
  *             self._block = NULL             # <<<<<<<<<<<<<<
@@ -2810,7 +2968,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_2__dealloc_
  */
     __pyx_v_self->_block = NULL;
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":28
+    /* "pyrucfs/backends/cython/_rucfs.pyx":52
  * 
  *     def __dealloc__(self):
  *         if self._block:             # <<<<<<<<<<<<<<
@@ -2819,7 +2977,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_2__dealloc_
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":27
+  /* "pyrucfs/backends/cython/_rucfs.pyx":51
  *             raise MemoryError
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2946,7 +3104,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_10SuperBlock_6__set
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":43
+/* "pyrucfs/backends/cython/_rucfs.pyx":67
  * 
  *     @staticmethod
  *     cdef inline File from_ptr(rucfs_file_t* file):             # <<<<<<<<<<<<<<
@@ -2964,19 +3122,19 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_ptr", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":44
+  /* "pyrucfs/backends/cython/_rucfs.pyx":68
  *     @staticmethod
  *     cdef inline File from_ptr(rucfs_file_t* file):
  *         cdef File self = File.__new__(File)             # <<<<<<<<<<<<<<
  *         self.file = file
  *         self.view_count = 0
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_File(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_File), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_File(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_File), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(((PyObject *)__pyx_t_1));
   __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":45
+  /* "pyrucfs/backends/cython/_rucfs.pyx":69
  *     cdef inline File from_ptr(rucfs_file_t* file):
  *         cdef File self = File.__new__(File)
  *         self.file = file             # <<<<<<<<<<<<<<
@@ -2985,7 +3143,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
  */
   __pyx_v_self->file = __pyx_v_file;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":46
+  /* "pyrucfs/backends/cython/_rucfs.pyx":70
  *         cdef File self = File.__new__(File)
  *         self.file = file
  *         self.view_count = 0             # <<<<<<<<<<<<<<
@@ -2994,7 +3152,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
  */
   __pyx_v_self->view_count = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":47
+  /* "pyrucfs/backends/cython/_rucfs.pyx":71
  *         self.file = file
  *         self.view_count = 0
  *         self.strides[0] = 1             # <<<<<<<<<<<<<<
@@ -3003,7 +3161,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
  */
   (__pyx_v_self->strides[0]) = 1;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":48
+  /* "pyrucfs/backends/cython/_rucfs.pyx":72
  *         self.view_count = 0
  *         self.strides[0] = 1
  *         return self             # <<<<<<<<<<<<<<
@@ -3015,7 +3173,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":43
+  /* "pyrucfs/backends/cython/_rucfs.pyx":67
  * 
  *     @staticmethod
  *     cdef inline File from_ptr(rucfs_file_t* file):             # <<<<<<<<<<<<<<
@@ -3035,7 +3193,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *_
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":51
+/* "pyrucfs/backends/cython/_rucfs.pyx":75
  * 
  *     @property
  *     def name(self):             # <<<<<<<<<<<<<<
@@ -3065,7 +3223,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_4name___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":52
+  /* "pyrucfs/backends/cython/_rucfs.pyx":76
  *     @property
  *     def name(self):
  *         return <bytes>self.file.name             # <<<<<<<<<<<<<<
@@ -3073,14 +3231,14 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_4name___get__
  *     cpdef inline close(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->file->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->file->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject*)__pyx_t_1));
   __pyx_r = __pyx_t_1;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":51
+  /* "pyrucfs/backends/cython/_rucfs.pyx":75
  * 
  *     @property
  *     def name(self):             # <<<<<<<<<<<<<<
@@ -3099,7 +3257,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_4name___get__
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":54
+/* "pyrucfs/backends/cython/_rucfs.pyx":78
  *         return <bytes>self.file.name
  * 
  *     cpdef inline close(self):             # <<<<<<<<<<<<<<
@@ -3117,7 +3275,7 @@ static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("close", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":55
+  /* "pyrucfs/backends/cython/_rucfs.pyx":79
  * 
  *     cpdef inline close(self):
  *         if not rucfs_ok(rucfs_fclose(self.file)):             # <<<<<<<<<<<<<<
@@ -3127,7 +3285,7 @@ static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_
   __pyx_t_1 = ((!(rucfs_ok(rucfs_fclose(__pyx_v_self->file)) != 0)) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":56
+    /* "pyrucfs/backends/cython/_rucfs.pyx":80
  *     cpdef inline close(self):
  *         if not rucfs_ok(rucfs_fclose(self.file)):
  *             raise IOError             # <<<<<<<<<<<<<<
@@ -3135,9 +3293,9 @@ static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_
  *     def __enter__(self):
  */
     __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-    __PYX_ERR(0, 56, __pyx_L1_error)
+    __PYX_ERR(0, 80, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":55
+    /* "pyrucfs/backends/cython/_rucfs.pyx":79
  * 
  *     cpdef inline close(self):
  *         if not rucfs_ok(rucfs_fclose(self.file)):             # <<<<<<<<<<<<<<
@@ -3146,7 +3304,7 @@ static CYTHON_INLINE PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":54
+  /* "pyrucfs/backends/cython/_rucfs.pyx":78
  *         return <bytes>self.file.name
  * 
  *     cpdef inline close(self):             # <<<<<<<<<<<<<<
@@ -3189,7 +3347,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_close(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("close", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3206,7 +3364,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_close(struct 
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":58
+/* "pyrucfs/backends/cython/_rucfs.pyx":82
  *             raise IOError
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -3233,7 +3391,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_2__enter__(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__enter__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":59
+  /* "pyrucfs/backends/cython/_rucfs.pyx":83
  * 
  *     def __enter__(self):
  *         return self             # <<<<<<<<<<<<<<
@@ -3245,7 +3403,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_2__enter__(st
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":58
+  /* "pyrucfs/backends/cython/_rucfs.pyx":82
  *             raise IOError
  * 
  *     def __enter__(self):             # <<<<<<<<<<<<<<
@@ -3260,7 +3418,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_2__enter__(st
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":61
+/* "pyrucfs/backends/cython/_rucfs.pyx":85
  *         return self
  * 
  *     def __exit__(self, exc_type, exc_val, exc_tb):             # <<<<<<<<<<<<<<
@@ -3306,17 +3464,17 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_4File_5__exit__(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_exc_val)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, 1); __PYX_ERR(0, 61, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, 1); __PYX_ERR(0, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_exc_tb)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, 2); __PYX_ERR(0, 61, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, 2); __PYX_ERR(0, 85, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__exit__") < 0)) __PYX_ERR(0, 61, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__exit__") < 0)) __PYX_ERR(0, 85, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3331,7 +3489,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_4File_5__exit__(PyO
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 61, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__exit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 85, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.File.__exit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3353,18 +3511,18 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_4__exit__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__exit__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":62
+  /* "pyrucfs/backends/cython/_rucfs.pyx":86
  * 
  *     def __exit__(self, exc_type, exc_val, exc_tb):
  *         self.close()             # <<<<<<<<<<<<<<
  * 
  *     def __len__(self):
  */
-  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close(__pyx_v_self, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":61
+  /* "pyrucfs/backends/cython/_rucfs.pyx":85
  *         return self
  * 
  *     def __exit__(self, exc_type, exc_val, exc_tb):             # <<<<<<<<<<<<<<
@@ -3385,7 +3543,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_4__exit__(str
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":64
+/* "pyrucfs/backends/cython/_rucfs.pyx":88
  *         self.close()
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -3411,7 +3569,7 @@ static Py_ssize_t __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_6__len__(str
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":65
+  /* "pyrucfs/backends/cython/_rucfs.pyx":89
  * 
  *     def __len__(self):
  *         return self.file.length             # <<<<<<<<<<<<<<
@@ -3421,7 +3579,7 @@ static Py_ssize_t __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_6__len__(str
   __pyx_r = __pyx_v_self->file->length;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":64
+  /* "pyrucfs/backends/cython/_rucfs.pyx":88
  *         self.close()
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -3435,7 +3593,7 @@ static Py_ssize_t __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_6__len__(str
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":68
+/* "pyrucfs/backends/cython/_rucfs.pyx":92
  * 
  *     # buffer protocol
  *     def __getbuffer__(self, Py_buffer * buffer, int flags):             # <<<<<<<<<<<<<<
@@ -3470,7 +3628,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   __pyx_v_buffer->obj = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(__pyx_v_buffer->obj);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":69
+  /* "pyrucfs/backends/cython/_rucfs.pyx":93
  *     # buffer protocol
  *     def __getbuffer__(self, Py_buffer * buffer, int flags):
  *         self.view_count += 1             # <<<<<<<<<<<<<<
@@ -3479,7 +3637,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_self->view_count = (__pyx_v_self->view_count + 1);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":70
+  /* "pyrucfs/backends/cython/_rucfs.pyx":94
  *     def __getbuffer__(self, Py_buffer * buffer, int flags):
  *         self.view_count += 1
  *         self.shape[0] = <Py_ssize_t> self.file.length             # <<<<<<<<<<<<<<
@@ -3488,7 +3646,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   (__pyx_v_self->shape[0]) = ((Py_ssize_t)__pyx_v_self->file->length);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":71
+  /* "pyrucfs/backends/cython/_rucfs.pyx":95
  *         self.view_count += 1
  *         self.shape[0] = <Py_ssize_t> self.file.length
  *         cdef size_t itemsize = sizeof(uint8_t)             # <<<<<<<<<<<<<<
@@ -3497,7 +3655,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_itemsize = (sizeof(uint8_t));
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":72
+  /* "pyrucfs/backends/cython/_rucfs.pyx":96
  *         self.shape[0] = <Py_ssize_t> self.file.length
  *         cdef size_t itemsize = sizeof(uint8_t)
  *         buffer.buf = self.file.data             # <<<<<<<<<<<<<<
@@ -3507,7 +3665,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   __pyx_t_1 = __pyx_v_self->file->data;
   __pyx_v_buffer->buf = __pyx_t_1;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":73
+  /* "pyrucfs/backends/cython/_rucfs.pyx":97
  *         cdef size_t itemsize = sizeof(uint8_t)
  *         buffer.buf = self.file.data
  *         buffer.obj = self             # <<<<<<<<<<<<<<
@@ -3520,7 +3678,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   __Pyx_DECREF(__pyx_v_buffer->obj);
   __pyx_v_buffer->obj = ((PyObject *)__pyx_v_self);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":74
+  /* "pyrucfs/backends/cython/_rucfs.pyx":98
  *         buffer.buf = self.file.data
  *         buffer.obj = self
  *         buffer.len = self.shape[0] * itemsize             # <<<<<<<<<<<<<<
@@ -3529,7 +3687,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->len = ((__pyx_v_self->shape[0]) * __pyx_v_itemsize);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":75
+  /* "pyrucfs/backends/cython/_rucfs.pyx":99
  *         buffer.obj = self
  *         buffer.len = self.shape[0] * itemsize
  *         buffer.readonly = 0             # <<<<<<<<<<<<<<
@@ -3538,7 +3696,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->readonly = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":76
+  /* "pyrucfs/backends/cython/_rucfs.pyx":100
  *         buffer.len = self.shape[0] * itemsize
  *         buffer.readonly = 0
  *         buffer.itemsize = <Py_ssize_t> itemsize             # <<<<<<<<<<<<<<
@@ -3547,7 +3705,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->itemsize = ((Py_ssize_t)__pyx_v_itemsize);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":77
+  /* "pyrucfs/backends/cython/_rucfs.pyx":101
  *         buffer.readonly = 0
  *         buffer.itemsize = <Py_ssize_t> itemsize
  *         buffer.format = "B"             # <<<<<<<<<<<<<<
@@ -3556,7 +3714,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->format = ((char *)"B");
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":78
+  /* "pyrucfs/backends/cython/_rucfs.pyx":102
  *         buffer.itemsize = <Py_ssize_t> itemsize
  *         buffer.format = "B"
  *         buffer.ndim = 1             # <<<<<<<<<<<<<<
@@ -3565,7 +3723,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->ndim = 1;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":79
+  /* "pyrucfs/backends/cython/_rucfs.pyx":103
  *         buffer.format = "B"
  *         buffer.ndim = 1
  *         buffer.shape = self.shape             # <<<<<<<<<<<<<<
@@ -3575,7 +3733,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   __pyx_t_2 = __pyx_v_self->shape;
   __pyx_v_buffer->shape = __pyx_t_2;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":80
+  /* "pyrucfs/backends/cython/_rucfs.pyx":104
  *         buffer.ndim = 1
  *         buffer.shape = self.shape
  *         buffer.strides = self.strides             # <<<<<<<<<<<<<<
@@ -3585,7 +3743,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   __pyx_t_2 = __pyx_v_self->strides;
   __pyx_v_buffer->strides = __pyx_t_2;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":81
+  /* "pyrucfs/backends/cython/_rucfs.pyx":105
  *         buffer.shape = self.shape
  *         buffer.strides = self.strides
  *         buffer.suboffsets = NULL             # <<<<<<<<<<<<<<
@@ -3594,7 +3752,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
  */
   __pyx_v_buffer->suboffsets = NULL;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":68
+  /* "pyrucfs/backends/cython/_rucfs.pyx":92
  * 
  *     # buffer protocol
  *     def __getbuffer__(self, Py_buffer * buffer, int flags):             # <<<<<<<<<<<<<<
@@ -3612,7 +3770,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_8__getbuffer__(stru
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":83
+/* "pyrucfs/backends/cython/_rucfs.pyx":107
  *         buffer.suboffsets = NULL
  * 
  *     def __releasebuffer__(self, Py_buffer * buffer):             # <<<<<<<<<<<<<<
@@ -3635,7 +3793,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_10__releasebuffer_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__releasebuffer__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":84
+  /* "pyrucfs/backends/cython/_rucfs.pyx":108
  * 
  *     def __releasebuffer__(self, Py_buffer * buffer):
  *         self.view_count -= 1             # <<<<<<<<<<<<<<
@@ -3644,7 +3802,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_10__releasebuffer_
  */
   __pyx_v_self->view_count = (__pyx_v_self->view_count - 1);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":83
+  /* "pyrucfs/backends/cython/_rucfs.pyx":107
  *         buffer.suboffsets = NULL
  * 
  *     def __releasebuffer__(self, Py_buffer * buffer):             # <<<<<<<<<<<<<<
@@ -3771,7 +3929,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4File_14__setstate_
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":93
+/* "pyrucfs/backends/cython/_rucfs.pyx":117
  * 
  *     @staticmethod
  *     cdef inline Path from_ptr(rucfs_path_enum_t* path):             # <<<<<<<<<<<<<<
@@ -3789,19 +3947,19 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_ptr", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":94
+  /* "pyrucfs/backends/cython/_rucfs.pyx":118
  *     @staticmethod
  *     cdef inline Path from_ptr(rucfs_path_enum_t* path):
  *         cdef Path self = Path.__new__(Path)             # <<<<<<<<<<<<<<
  *         self.path = path
  *         return self
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Path(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Path), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Path(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Path), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(((PyObject *)__pyx_t_1));
   __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":95
+  /* "pyrucfs/backends/cython/_rucfs.pyx":119
  *     cdef inline Path from_ptr(rucfs_path_enum_t* path):
  *         cdef Path self = Path.__new__(Path)
  *         self.path = path             # <<<<<<<<<<<<<<
@@ -3810,7 +3968,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *_
  */
   __pyx_v_self->path = __pyx_v_path;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":96
+  /* "pyrucfs/backends/cython/_rucfs.pyx":120
  *         cdef Path self = Path.__new__(Path)
  *         self.path = path
  *         return self             # <<<<<<<<<<<<<<
@@ -3822,7 +3980,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *_
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":93
+  /* "pyrucfs/backends/cython/_rucfs.pyx":117
  * 
  *     @staticmethod
  *     cdef inline Path from_ptr(rucfs_path_enum_t* path):             # <<<<<<<<<<<<<<
@@ -3842,7 +4000,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *_
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":99
+/* "pyrucfs/backends/cython/_rucfs.pyx":123
  * 
  *     @property
  *     def name(self):             # <<<<<<<<<<<<<<
@@ -3872,7 +4030,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4name___get__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":100
+  /* "pyrucfs/backends/cython/_rucfs.pyx":124
  *     @property
  *     def name(self):
  *         return <bytes> self.path.name             # <<<<<<<<<<<<<<
@@ -3880,14 +4038,14 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4name___get__
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->path->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(__pyx_v_self->path->name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject*)__pyx_t_1));
   __pyx_r = __pyx_t_1;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":99
+  /* "pyrucfs/backends/cython/_rucfs.pyx":123
  * 
  *     @property
  *     def name(self):             # <<<<<<<<<<<<<<
@@ -3906,7 +4064,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4name___get__
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":103
+/* "pyrucfs/backends/cython/_rucfs.pyx":127
  * 
  *     @property
  *     def type(self):             # <<<<<<<<<<<<<<
@@ -3930,103 +4088,27 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_4Path_4type_1__get_
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4type___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":107
+  /* "pyrucfs/backends/cython/_rucfs.pyx":131
  *         directory or file or symlink
  *         """
- *         if self.path.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
- *             return "directory"
- *         elif    self.path.type == rucfs_inode_file:
- */
-  __pyx_t_1 = ((__pyx_v_self->path->type == rucfs_inode_directory) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":108
- *         """
- *         if self.path.type == rucfs_inode_directory:
- *             return "directory"             # <<<<<<<<<<<<<<
- *         elif    self.path.type == rucfs_inode_file:
- *             return "file"
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_directory);
-    __pyx_r = __pyx_n_u_directory;
-    goto __pyx_L0;
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":107
- *         directory or file or symlink
- *         """
- *         if self.path.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
- *             return "directory"
- *         elif    self.path.type == rucfs_inode_file:
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":109
- *         if self.path.type == rucfs_inode_directory:
- *             return "directory"
- *         elif    self.path.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
- *             return "file"
- *         elif  self.path.type == rucfs_inode_symlink:
- */
-  __pyx_t_1 = ((__pyx_v_self->path->type == rucfs_inode_file) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":110
- *             return "directory"
- *         elif    self.path.type == rucfs_inode_file:
- *             return "file"             # <<<<<<<<<<<<<<
- *         elif  self.path.type == rucfs_inode_symlink:
- *             return "symlink"
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_file);
-    __pyx_r = __pyx_n_u_file;
-    goto __pyx_L0;
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":109
- *         if self.path.type == rucfs_inode_directory:
- *             return "directory"
- *         elif    self.path.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
- *             return "file"
- *         elif  self.path.type == rucfs_inode_symlink:
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":111
- *         elif    self.path.type == rucfs_inode_file:
- *             return "file"
- *         elif  self.path.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
- *             return "symlink"
+ *         return self.path.type             # <<<<<<<<<<<<<<
+ * 
  * @cython.final
  */
-  __pyx_t_1 = ((__pyx_v_self->path->type == rucfs_inode_symlink) != 0);
-  if (__pyx_t_1) {
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_uint8_t(__pyx_v_self->path->type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":112
- *             return "file"
- *         elif  self.path.type == rucfs_inode_symlink:
- *             return "symlink"             # <<<<<<<<<<<<<<
- * @cython.final
- * @cython.freelist(8)
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_symlink);
-    __pyx_r = __pyx_n_u_symlink;
-    goto __pyx_L0;
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":111
- *         elif    self.path.type == rucfs_inode_file:
- *             return "file"
- *         elif  self.path.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
- *             return "symlink"
- * @cython.final
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":103
+  /* "pyrucfs/backends/cython/_rucfs.pyx":127
  * 
  *     @property
  *     def type(self):             # <<<<<<<<<<<<<<
@@ -4035,7 +4117,10 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_4type___get__
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Path.type.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -4157,11 +4242,310 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_4Path_2__setstate_c
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":120
+/* "pyrucfs/backends/cython/_rucfs.pyx":140
+ *         rucfs_inode_t *node
+ *         int own
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ */
+
+/* Python wrapper */
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  rucfs_inode_type_t __pyx_v_type_;
+  uint32_t __pyx_v_name_offset;
+  int __pyx_v_own;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_type,&__pyx_n_s_name_offset,&__pyx_n_s_own,0};
+    PyObject* values[3] = {0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_type);
+          if (value) { values[0] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name_offset);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_own);
+          if (value) { values[2] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 140, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    if (values[0]) {
+      __pyx_v_type_ = __Pyx_PyInt_As_uint8_t(values[0]); if (unlikely((__pyx_v_type_ == ((rucfs_inode_type_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L3_error)
+    } else {
+      __pyx_v_type_ = __pyx_k__7;
+    }
+    if (values[1]) {
+      __pyx_v_name_offset = __Pyx_PyInt_As_uint32_t(values[1]); if (unlikely((__pyx_v_name_offset == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L3_error)
+    } else {
+      __pyx_v_name_offset = ((uint32_t)0);
+    }
+    if (values[2]) {
+      __pyx_v_own = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_own == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L3_error)
+    } else {
+      __pyx_v_own = ((int)1);
+    }
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 140, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Inode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___cinit__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self), __pyx_v_type_, __pyx_v_name_offset, __pyx_v_own);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, int __pyx_v_own) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":141
+ *         int own
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):
+ *         if own:             # <<<<<<<<<<<<<<
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ *             if not self.node:
+ */
+  __pyx_t_1 = (__pyx_v_own != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":142
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))             # <<<<<<<<<<<<<<
+ *             if not self.node:
+ *                 raise MemoryError
+ */
+    __pyx_v_self->node = ((rucfs_inode_t *)PyMem_Malloc((sizeof(rucfs_inode_t))));
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":143
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ *             if not self.node:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             self.node.type = type_
+ */
+    __pyx_t_1 = ((!(__pyx_v_self->node != 0)) != 0);
+    if (unlikely(__pyx_t_1)) {
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":144
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ *             if not self.node:
+ *                 raise MemoryError             # <<<<<<<<<<<<<<
+ *             self.node.type = type_
+ *             self.node.name_offset = name_offset
+ */
+      PyErr_NoMemory(); __PYX_ERR(0, 144, __pyx_L1_error)
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":143
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ *             if not self.node:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             self.node.type = type_
+ */
+    }
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":145
+ *             if not self.node:
+ *                 raise MemoryError
+ *             self.node.type = type_             # <<<<<<<<<<<<<<
+ *             self.node.name_offset = name_offset
+ *             self.own = 1
+ */
+    __pyx_v_self->node->type = __pyx_v_type_;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":146
+ *                 raise MemoryError
+ *             self.node.type = type_
+ *             self.node.name_offset = name_offset             # <<<<<<<<<<<<<<
+ *             self.own = 1
+ *         else:
+ */
+    __pyx_v_self->node->name_offset = __pyx_v_name_offset;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":147
+ *             self.node.type = type_
+ *             self.node.name_offset = name_offset
+ *             self.own = 1             # <<<<<<<<<<<<<<
+ *         else:
+ *             self.own = 0
+ */
+    __pyx_v_self->own = 1;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":141
+ *         int own
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):
+ *         if own:             # <<<<<<<<<<<<<<
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ *             if not self.node:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":149
+ *             self.own = 1
+ *         else:
+ *             self.own = 0             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  /*else*/ {
+    __pyx_v_self->own = 0;
+  }
+  __pyx_L3:;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":140
+ *         rucfs_inode_t *node
+ *         int own
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Inode.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":151
+ *             self.own = 0
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self.node:
+ *             PyMem_Free(self.node)
+ */
+
+/* Python wrapper */
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__dealloc__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":152
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self.node:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self.node)
+ * 
+ */
+  __pyx_t_2 = (__pyx_v_self->own != 0);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_self->node != 0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":153
+ *     def __dealloc__(self):
+ *         if self.own and self.node:
+ *             PyMem_Free(self.node)             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+    PyMem_Free(__pyx_v_self->node);
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":152
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self.node:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self.node)
+ * 
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":151
+ *             self.own = 0
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self.node:
+ *             PyMem_Free(self.node)
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":156
  * 
  *     @staticmethod
  *     cdef inline Inode from_ptr(rucfs_inode_t *node):             # <<<<<<<<<<<<<<
- *         cdef Inode self = Inode.__new__(Inode)
+ *         cdef Inode self = Inode.__new__(Inode, own = 0)
  *         self.node = node
  */
 
@@ -4170,34 +4554,39 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_ptr", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":121
+  /* "pyrucfs/backends/cython/_rucfs.pyx":157
  *     @staticmethod
  *     cdef inline Inode from_ptr(rucfs_inode_t *node):
- *         cdef Inode self = Inode.__new__(Inode)             # <<<<<<<<<<<<<<
+ *         cdef Inode self = Inode.__new__(Inode, own = 0)             # <<<<<<<<<<<<<<
  *         self.node = node
  *         return self
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Inode(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Inode), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
-  __Pyx_GOTREF(((PyObject *)__pyx_t_1));
-  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_own, __pyx_int_0) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Inode(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Inode), __pyx_empty_tuple, __pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __Pyx_GOTREF(((PyObject *)__pyx_t_2));
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":122
+  /* "pyrucfs/backends/cython/_rucfs.pyx":158
  *     cdef inline Inode from_ptr(rucfs_inode_t *node):
- *         cdef Inode self = Inode.__new__(Inode)
+ *         cdef Inode self = Inode.__new__(Inode, own = 0)
  *         self.node = node             # <<<<<<<<<<<<<<
  *         return self
  * 
  */
   __pyx_v_self->node = __pyx_v_node;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":123
- *         cdef Inode self = Inode.__new__(Inode)
+  /* "pyrucfs/backends/cython/_rucfs.pyx":159
+ *         cdef Inode self = Inode.__new__(Inode, own = 0)
  *         self.node = node
  *         return self             # <<<<<<<<<<<<<<
  * 
@@ -4208,17 +4597,18 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":120
+  /* "pyrucfs/backends/cython/_rucfs.pyx":156
  * 
  *     @staticmethod
  *     cdef inline Inode from_ptr(rucfs_inode_t *node):             # <<<<<<<<<<<<<<
- *         cdef Inode self = Inode.__new__(Inode)
+ *         cdef Inode self = Inode.__new__(Inode, own = 0)
  *         self.node = node
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Inode.from_ptr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -4228,7 +4618,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":126
+/* "pyrucfs/backends/cython/_rucfs.pyx":162
  * 
  *     @property
  *     def type(self):             # <<<<<<<<<<<<<<
@@ -4252,103 +4642,27 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4type_1__get
 static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4type___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":130
+  /* "pyrucfs/backends/cython/_rucfs.pyx":166
  *         directory or file or symlink
  *         """
- *         if self.node.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
- *             return "directory"
- *         elif self.node.type == rucfs_inode_file:
- */
-  __pyx_t_1 = ((__pyx_v_self->node->type == rucfs_inode_directory) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":131
- *         """
- *         if self.node.type == rucfs_inode_directory:
- *             return "directory"             # <<<<<<<<<<<<<<
- *         elif self.node.type == rucfs_inode_file:
- *             return "file"
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_directory);
-    __pyx_r = __pyx_n_u_directory;
-    goto __pyx_L0;
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":130
- *         directory or file or symlink
- *         """
- *         if self.node.type == rucfs_inode_directory:             # <<<<<<<<<<<<<<
- *             return "directory"
- *         elif self.node.type == rucfs_inode_file:
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":132
- *         if self.node.type == rucfs_inode_directory:
- *             return "directory"
- *         elif self.node.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
- *             return "file"
- *         elif self.node.type == rucfs_inode_symlink:
- */
-  __pyx_t_1 = ((__pyx_v_self->node->type == rucfs_inode_file) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":133
- *             return "directory"
- *         elif self.node.type == rucfs_inode_file:
- *             return "file"             # <<<<<<<<<<<<<<
- *         elif self.node.type == rucfs_inode_symlink:
- *             return "symlink"
- */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_file);
-    __pyx_r = __pyx_n_u_file;
-    goto __pyx_L0;
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":132
- *         if self.node.type == rucfs_inode_directory:
- *             return "directory"
- *         elif self.node.type == rucfs_inode_file:             # <<<<<<<<<<<<<<
- *             return "file"
- *         elif self.node.type == rucfs_inode_symlink:
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":134
- *         elif self.node.type == rucfs_inode_file:
- *             return "file"
- *         elif self.node.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
- *             return "symlink"
- * 
- */
-  __pyx_t_1 = ((__pyx_v_self->node->type == rucfs_inode_symlink) != 0);
-  if (__pyx_t_1) {
-
-    /* "pyrucfs/backends/cython/_rucfs.pyx":135
- *             return "file"
- *         elif self.node.type == rucfs_inode_symlink:
- *             return "symlink"             # <<<<<<<<<<<<<<
+ *         return self.node.type             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-    __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(__pyx_n_u_symlink);
-    __pyx_r = __pyx_n_u_symlink;
-    goto __pyx_L0;
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_uint8_t(__pyx_v_self->node->type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":134
- *         elif self.node.type == rucfs_inode_file:
- *             return "file"
- *         elif self.node.type == rucfs_inode_symlink:             # <<<<<<<<<<<<<<
- *             return "symlink"
- * 
- */
-  }
-
-  /* "pyrucfs/backends/cython/_rucfs.pyx":126
+  /* "pyrucfs/backends/cython/_rucfs.pyx":162
  * 
  *     @property
  *     def type(self):             # <<<<<<<<<<<<<<
@@ -4357,19 +4671,22 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4type___get_
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Inode.type.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":138
+/* "pyrucfs/backends/cython/_rucfs.pyx":169
  * 
  *     @property
  *     def name_offset(self):             # <<<<<<<<<<<<<<
  *         return self.node.name_offset
- * @cython.final
+ * 
  */
 
 /* Python wrapper */
@@ -4394,26 +4711,26 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_11name_offse
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":139
+  /* "pyrucfs/backends/cython/_rucfs.pyx":170
  *     @property
  *     def name_offset(self):
  *         return self.node.name_offset             # <<<<<<<<<<<<<<
- * @cython.final
- * @cython.freelist(8)
+ * 
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->node->name_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->node->name_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":138
+  /* "pyrucfs/backends/cython/_rucfs.pyx":169
  * 
  *     @property
  *     def name_offset(self):             # <<<<<<<<<<<<<<
  *         return self.node.name_offset
- * @cython.final
+ * 
  */
 
   /* function exit code */
@@ -4429,25 +4746,25 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_11name_offse
 
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cython__[] = "Inode.__reduce_cython__(self)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4__reduce_cython__[] = "Inode.__reduce_cython__(self)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4__reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4458,11 +4775,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cyt
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4470,7 +4787,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cyt
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
@@ -4486,26 +4803,26 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cyt
 
 /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_cython__[] = "Inode.__setstate_cython__(self, __pyx_state)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_6__setstate_cython__[] = "Inode.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_6__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4515,11 +4832,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":4
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4527,9 +4844,9 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
   /* function exit code */
@@ -4542,11 +4859,360 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":147
+/* "pyrucfs/backends/cython/_rucfs.pyx":181
+ *         int own
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ */
+
+/* Python wrapper */
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  rucfs_inode_type_t __pyx_v_type_;
+  uint32_t __pyx_v_name_offset;
+  uint32_t __pyx_v_item_count;
+  uint32_t __pyx_v_ref_inode_offset;
+  int __pyx_v_own;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_type,&__pyx_n_s_name_offset,&__pyx_n_s_item_count,&__pyx_n_s_ref_inode_offset,&__pyx_n_s_own,0};
+    PyObject* values[5] = {0,0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_type);
+          if (value) { values[0] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name_offset);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_item_count);
+          if (value) { values[2] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ref_inode_offset);
+          if (value) { values[3] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_own);
+          if (value) { values[4] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 181, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    if (values[0]) {
+      __pyx_v_type_ = __Pyx_PyInt_As_uint8_t(values[0]); if (unlikely((__pyx_v_type_ == ((rucfs_inode_type_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+    } else {
+      __pyx_v_type_ = __pyx_k__10;
+    }
+    if (values[1]) {
+      __pyx_v_name_offset = __Pyx_PyInt_As_uint32_t(values[1]); if (unlikely((__pyx_v_name_offset == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+    } else {
+      __pyx_v_name_offset = ((uint32_t)0);
+    }
+    if (values[2]) {
+      __pyx_v_item_count = __Pyx_PyInt_As_uint32_t(values[2]); if (unlikely((__pyx_v_item_count == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+    } else {
+      __pyx_v_item_count = ((uint32_t)0);
+    }
+    if (values[3]) {
+      __pyx_v_ref_inode_offset = __Pyx_PyInt_As_uint32_t(values[3]); if (unlikely((__pyx_v_ref_inode_offset == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+    } else {
+      __pyx_v_ref_inode_offset = ((uint32_t)0);
+    }
+    if (values[4]) {
+      __pyx_v_own = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_own == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+    } else {
+      __pyx_v_own = ((int)1);
+    }
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 181, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Directory.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___cinit__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self), __pyx_v_type_, __pyx_v_name_offset, __pyx_v_item_count, __pyx_v_ref_inode_offset, __pyx_v_own);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, uint32_t __pyx_v_item_count, uint32_t __pyx_v_ref_inode_offset, int __pyx_v_own) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":182
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:             # <<<<<<<<<<<<<<
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ *             if not self.d:
+ */
+  __pyx_t_1 = (__pyx_v_own != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":183
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))             # <<<<<<<<<<<<<<
+ *             if not self.d:
+ *                 raise MemoryError
+ */
+    __pyx_v_self->d = ((rucfs_inode_directory_t *)PyMem_Malloc((sizeof(rucfs_inode_directory_t))));
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":184
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ *             if not self.d:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             (<rucfs_inode_t *> self.d).type = type_
+ */
+    __pyx_t_1 = ((!(__pyx_v_self->d != 0)) != 0);
+    if (unlikely(__pyx_t_1)) {
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":185
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ *             if not self.d:
+ *                 raise MemoryError             # <<<<<<<<<<<<<<
+ *             (<rucfs_inode_t *> self.d).type = type_
+ *             (<rucfs_inode_t *> self.d).name_offset = name_offset
+ */
+      PyErr_NoMemory(); __PYX_ERR(0, 185, __pyx_L1_error)
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":184
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ *             if not self.d:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             (<rucfs_inode_t *> self.d).type = type_
+ */
+    }
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":186
+ *             if not self.d:
+ *                 raise MemoryError
+ *             (<rucfs_inode_t *> self.d).type = type_             # <<<<<<<<<<<<<<
+ *             (<rucfs_inode_t *> self.d).name_offset = name_offset
+ *             self.d.item_count = item_count
+ */
+    ((rucfs_inode_t *)__pyx_v_self->d)->type = __pyx_v_type_;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":187
+ *                 raise MemoryError
+ *             (<rucfs_inode_t *> self.d).type = type_
+ *             (<rucfs_inode_t *> self.d).name_offset = name_offset             # <<<<<<<<<<<<<<
+ *             self.d.item_count = item_count
+ *             self.d.ref_inode_offset = ref_inode_offset
+ */
+    ((rucfs_inode_t *)__pyx_v_self->d)->name_offset = __pyx_v_name_offset;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":188
+ *             (<rucfs_inode_t *> self.d).type = type_
+ *             (<rucfs_inode_t *> self.d).name_offset = name_offset
+ *             self.d.item_count = item_count             # <<<<<<<<<<<<<<
+ *             self.d.ref_inode_offset = ref_inode_offset
+ *             self.own = 1
+ */
+    __pyx_v_self->d->item_count = __pyx_v_item_count;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":189
+ *             (<rucfs_inode_t *> self.d).name_offset = name_offset
+ *             self.d.item_count = item_count
+ *             self.d.ref_inode_offset = ref_inode_offset             # <<<<<<<<<<<<<<
+ *             self.own = 1
+ *         else:
+ */
+    __pyx_v_self->d->ref_inode_offset = __pyx_v_ref_inode_offset;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":190
+ *             self.d.item_count = item_count
+ *             self.d.ref_inode_offset = ref_inode_offset
+ *             self.own = 1             # <<<<<<<<<<<<<<
+ *         else:
+ *             self.own = 0
+ */
+    __pyx_v_self->own = 1;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":182
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:             # <<<<<<<<<<<<<<
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ *             if not self.d:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":192
+ *             self.own = 1
+ *         else:
+ *             self.own = 0             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
+ */
+  /*else*/ {
+    __pyx_v_self->own = 0;
+  }
+  __pyx_L3:;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":181
+ *         int own
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Directory.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":194
+ *             self.own = 0
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self.d:
+ *             PyMem_Free(self.d)
+ */
+
+/* Python wrapper */
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__dealloc__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":195
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self.d:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self.d)
+ * 
+ */
+  __pyx_t_2 = (__pyx_v_self->own != 0);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_self->d != 0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":196
+ *     def __dealloc__(self):
+ *         if self.own and self.d:
+ *             PyMem_Free(self.d)             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+    PyMem_Free(__pyx_v_self->d);
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":195
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self.d:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self.d)
+ * 
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":194
+ *             self.own = 0
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self.d:
+ *             PyMem_Free(self.d)
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":199
  * 
  *     @staticmethod
  *     cdef inline Directory from_ptr(rucfs_inode_directory_t* d):             # <<<<<<<<<<<<<<
- *         cdef Directory self = Directory.__new__(Directory)
+ *         cdef Directory self = Directory.__new__(Directory, own = 0)
  *         self.d = d
  */
 
@@ -4555,34 +5221,39 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directo
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_ptr", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":148
+  /* "pyrucfs/backends/cython/_rucfs.pyx":200
  *     @staticmethod
  *     cdef inline Directory from_ptr(rucfs_inode_directory_t* d):
- *         cdef Directory self = Directory.__new__(Directory)             # <<<<<<<<<<<<<<
+ *         cdef Directory self = Directory.__new__(Directory, own = 0)             # <<<<<<<<<<<<<<
  *         self.d = d
  *         return self
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Directory(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Directory), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
-  __Pyx_GOTREF(((PyObject *)__pyx_t_1));
-  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_own, __pyx_int_0) < 0) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Directory(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Directory), __pyx_empty_tuple, __pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __Pyx_GOTREF(((PyObject *)__pyx_t_2));
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":149
+  /* "pyrucfs/backends/cython/_rucfs.pyx":201
  *     cdef inline Directory from_ptr(rucfs_inode_directory_t* d):
- *         cdef Directory self = Directory.__new__(Directory)
+ *         cdef Directory self = Directory.__new__(Directory, own = 0)
  *         self.d = d             # <<<<<<<<<<<<<<
  *         return self
  * 
  */
   __pyx_v_self->d = __pyx_v_d;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":150
- *         cdef Directory self = Directory.__new__(Directory)
+  /* "pyrucfs/backends/cython/_rucfs.pyx":202
+ *         cdef Directory self = Directory.__new__(Directory, own = 0)
  *         self.d = d
  *         return self             # <<<<<<<<<<<<<<
  * 
@@ -4593,17 +5264,18 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directo
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":147
+  /* "pyrucfs/backends/cython/_rucfs.pyx":199
  * 
  *     @staticmethod
  *     cdef inline Directory from_ptr(rucfs_inode_directory_t* d):             # <<<<<<<<<<<<<<
- *         cdef Directory self = Directory.__new__(Directory)
+ *         cdef Directory self = Directory.__new__(Directory, own = 0)
  *         self.d = d
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Directory.from_ptr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -4613,7 +5285,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directo
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":153
+/* "pyrucfs/backends/cython/_rucfs.pyx":205
  * 
  *     @property
  *     def common(self):             # <<<<<<<<<<<<<<
@@ -4643,7 +5315,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6common_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":154
+  /* "pyrucfs/backends/cython/_rucfs.pyx":206
  *     @property
  *     def common(self):
  *         return Inode.from_ptr(&self.d.common)             # <<<<<<<<<<<<<<
@@ -4651,13 +5323,13 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6common_
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr((&__pyx_v_self->d->common))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr((&__pyx_v_self->d->common))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":153
+  /* "pyrucfs/backends/cython/_rucfs.pyx":205
  * 
  *     @property
  *     def common(self):             # <<<<<<<<<<<<<<
@@ -4676,7 +5348,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6common_
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":157
+/* "pyrucfs/backends/cython/_rucfs.pyx":209
  * 
  *     @property
  *     def item_count(self):             # <<<<<<<<<<<<<<
@@ -4706,7 +5378,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_10item_c
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":158
+  /* "pyrucfs/backends/cython/_rucfs.pyx":210
  *     @property
  *     def item_count(self):
  *         return self.d.item_count             # <<<<<<<<<<<<<<
@@ -4714,13 +5386,13 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_10item_c
  *     @property
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->d->item_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->d->item_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":157
+  /* "pyrucfs/backends/cython/_rucfs.pyx":209
  * 
  *     @property
  *     def item_count(self):             # <<<<<<<<<<<<<<
@@ -4739,7 +5411,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_10item_c
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":161
+/* "pyrucfs/backends/cython/_rucfs.pyx":213
  * 
  *     @property
  *     def ref_inode_offset(self):             # <<<<<<<<<<<<<<
@@ -4769,7 +5441,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_16ref_in
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":162
+  /* "pyrucfs/backends/cython/_rucfs.pyx":214
  *     @property
  *     def ref_inode_offset(self):
  *         return self.d.ref_inode_offset             # <<<<<<<<<<<<<<
@@ -4777,13 +5449,13 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_16ref_in
  * @cython.final
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->d->ref_inode_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->d->ref_inode_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":161
+  /* "pyrucfs/backends/cython/_rucfs.pyx":213
  * 
  *     @property
  *     def ref_inode_offset(self):             # <<<<<<<<<<<<<<
@@ -4804,25 +5476,25 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_16ref_in
 
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce_cython__[] = "Directory.__reduce_cython__(self)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_4__reduce_cython__[] = "Directory.__reduce_cython__(self)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self));
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_4__reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4833,11 +5505,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4845,7 +5517,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
@@ -4861,26 +5533,26 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce
 
 /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setstate_cython__[] = "Directory.__setstate_cython__(self, __pyx_state)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6__setstate_cython__[] = "Directory.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4890,11 +5562,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setst
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":4
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4902,9 +5574,9 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setst
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
   /* function exit code */
@@ -4917,11 +5589,335 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setst
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":170
- *     cdef rucfs_inode_symlink_t* _link
+/* "pyrucfs/backends/cython/_rucfs.pyx":224
+ *         int own   # own this ptr (not from_ptr)
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ */
+
+/* Python wrapper */
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  rucfs_inode_type_t __pyx_v_type_;
+  uint32_t __pyx_v_name_offset;
+  uint32_t __pyx_v_ref_inode_offset;
+  int __pyx_v_own;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_type,&__pyx_n_s_name_offset,&__pyx_n_s_ref_inode_offset,&__pyx_n_s_own,0};
+    PyObject* values[4] = {0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_type);
+          if (value) { values[0] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_name_offset);
+          if (value) { values[1] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ref_inode_offset);
+          if (value) { values[2] = value; kw_args--; }
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_own);
+          if (value) { values[3] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 224, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    if (values[0]) {
+      __pyx_v_type_ = __Pyx_PyInt_As_uint8_t(values[0]); if (unlikely((__pyx_v_type_ == ((rucfs_inode_type_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
+    } else {
+      __pyx_v_type_ = __pyx_k__13;
+    }
+    if (values[1]) {
+      __pyx_v_name_offset = __Pyx_PyInt_As_uint32_t(values[1]); if (unlikely((__pyx_v_name_offset == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
+    } else {
+      __pyx_v_name_offset = ((uint32_t)0);
+    }
+    if (values[2]) {
+      __pyx_v_ref_inode_offset = __Pyx_PyInt_As_uint32_t(values[2]); if (unlikely((__pyx_v_ref_inode_offset == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
+    } else {
+      __pyx_v_ref_inode_offset = ((uint32_t)0);
+    }
+    if (values[3]) {
+      __pyx_v_own = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_own == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L3_error)
+    } else {
+      __pyx_v_own = ((int)1);
+    }
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 224, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Symlink.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___cinit__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self), __pyx_v_type_, __pyx_v_name_offset, __pyx_v_ref_inode_offset, __pyx_v_own);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___cinit__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, rucfs_inode_type_t __pyx_v_type_, uint32_t __pyx_v_name_offset, uint32_t __pyx_v_ref_inode_offset, int __pyx_v_own) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":225
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:   # user created struct             # <<<<<<<<<<<<<<
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ *             if not self._link:
+ */
+  __pyx_t_1 = (__pyx_v_own != 0);
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":226
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))             # <<<<<<<<<<<<<<
+ *             if not self._link:
+ *                 raise MemoryError
+ */
+    __pyx_v_self->_link = ((rucfs_inode_symlink_t *)PyMem_Malloc((sizeof(rucfs_inode_symlink_t))));
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":227
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ *             if not self._link:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             (<rucfs_inode_t*>self._link).type = type_
+ */
+    __pyx_t_1 = ((!(__pyx_v_self->_link != 0)) != 0);
+    if (unlikely(__pyx_t_1)) {
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":228
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ *             if not self._link:
+ *                 raise MemoryError             # <<<<<<<<<<<<<<
+ *             (<rucfs_inode_t*>self._link).type = type_
+ *             (<rucfs_inode_t *> self._link).name_offset = name_offset
+ */
+      PyErr_NoMemory(); __PYX_ERR(0, 228, __pyx_L1_error)
+
+      /* "pyrucfs/backends/cython/_rucfs.pyx":227
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ *             if not self._link:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ *             (<rucfs_inode_t*>self._link).type = type_
+ */
+    }
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":229
+ *             if not self._link:
+ *                 raise MemoryError
+ *             (<rucfs_inode_t*>self._link).type = type_             # <<<<<<<<<<<<<<
+ *             (<rucfs_inode_t *> self._link).name_offset = name_offset
+ *             self._link.ref_inode_offset = ref_inode_offset
+ */
+    ((rucfs_inode_t *)__pyx_v_self->_link)->type = __pyx_v_type_;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":230
+ *                 raise MemoryError
+ *             (<rucfs_inode_t*>self._link).type = type_
+ *             (<rucfs_inode_t *> self._link).name_offset = name_offset             # <<<<<<<<<<<<<<
+ *             self._link.ref_inode_offset = ref_inode_offset
+ *             self.own = 1
+ */
+    ((rucfs_inode_t *)__pyx_v_self->_link)->name_offset = __pyx_v_name_offset;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":231
+ *             (<rucfs_inode_t*>self._link).type = type_
+ *             (<rucfs_inode_t *> self._link).name_offset = name_offset
+ *             self._link.ref_inode_offset = ref_inode_offset             # <<<<<<<<<<<<<<
+ *             self.own = 1
+ *         else:  # from_ptr called
+ */
+    __pyx_v_self->_link->ref_inode_offset = __pyx_v_ref_inode_offset;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":232
+ *             (<rucfs_inode_t *> self._link).name_offset = name_offset
+ *             self._link.ref_inode_offset = ref_inode_offset
+ *             self.own = 1             # <<<<<<<<<<<<<<
+ *         else:  # from_ptr called
+ *             self.own = 0
+ */
+    __pyx_v_self->own = 1;
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":225
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):
+ *         if own:   # user created struct             # <<<<<<<<<<<<<<
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ *             if not self._link:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":234
+ *             self.own = 1
+ *         else:  # from_ptr called
+ *             self.own = 0             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  /*else*/ {
+    __pyx_v_self->own = 0;
+  }
+  __pyx_L3:;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":224
+ *         int own   # own this ptr (not from_ptr)
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Symlink.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":237
+ * 
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self._link:
+ *             PyMem_Free(self._link)
+ */
+
+/* Python wrapper */
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__dealloc__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__dealloc__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":238
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self._link:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self._link)
+ * 
+ */
+  __pyx_t_2 = (__pyx_v_self->own != 0);
+  if (__pyx_t_2) {
+  } else {
+    __pyx_t_1 = __pyx_t_2;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_2 = (__pyx_v_self->_link != 0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":239
+ *     def __dealloc__(self):
+ *         if self.own and self._link:
+ *             PyMem_Free(self._link)             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+    PyMem_Free(__pyx_v_self->_link);
+
+    /* "pyrucfs/backends/cython/_rucfs.pyx":238
+ * 
+ *     def __dealloc__(self):
+ *         if self.own and self._link:             # <<<<<<<<<<<<<<
+ *             PyMem_Free(self._link)
+ * 
+ */
+  }
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":237
+ * 
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         if self.own and self._link:
+ *             PyMem_Free(self._link)
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":242
+ * 
  *     @staticmethod
  *     cdef inline Symlink from_ptr(rucfs_inode_symlink_t* link):             # <<<<<<<<<<<<<<
- *         cdef Symlink self =Symlink.__new__(Symlink)
+ *         cdef Symlink self =Symlink.__new__(Symlink, own = 0)
  *         self._link = link
  */
 
@@ -4930,55 +5926,61 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_ptr", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":171
+  /* "pyrucfs/backends/cython/_rucfs.pyx":243
  *     @staticmethod
  *     cdef inline Symlink from_ptr(rucfs_inode_symlink_t* link):
- *         cdef Symlink self =Symlink.__new__(Symlink)             # <<<<<<<<<<<<<<
+ *         cdef Symlink self =Symlink.__new__(Symlink, own = 0)             # <<<<<<<<<<<<<<
  *         self._link = link
  *         return self
  */
-  __pyx_t_1 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Symlink(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Symlink), __pyx_empty_tuple, NULL)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __Pyx_GOTREF(((PyObject *)__pyx_t_1));
-  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_own, __pyx_int_0) < 0) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Symlink(((PyTypeObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Symlink), __pyx_empty_tuple, __pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __Pyx_GOTREF(((PyObject *)__pyx_t_2));
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":172
+  /* "pyrucfs/backends/cython/_rucfs.pyx":244
  *     cdef inline Symlink from_ptr(rucfs_inode_symlink_t* link):
- *         cdef Symlink self =Symlink.__new__(Symlink)
+ *         cdef Symlink self =Symlink.__new__(Symlink, own = 0)
  *         self._link = link             # <<<<<<<<<<<<<<
  *         return self
  * 
  */
   __pyx_v_self->_link = __pyx_v_link;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":173
- *         cdef Symlink self =Symlink.__new__(Symlink)
+  /* "pyrucfs/backends/cython/_rucfs.pyx":245
+ *         cdef Symlink self =Symlink.__new__(Symlink, own = 0)
  *         self._link = link
  *         return self             # <<<<<<<<<<<<<<
  * 
- * @cython.final
+ *     @property
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":170
- *     cdef rucfs_inode_symlink_t* _link
+  /* "pyrucfs/backends/cython/_rucfs.pyx":242
+ * 
  *     @staticmethod
  *     cdef inline Symlink from_ptr(rucfs_inode_symlink_t* link):             # <<<<<<<<<<<<<<
- *         cdef Symlink self =Symlink.__new__(Symlink)
+ *         cdef Symlink self =Symlink.__new__(Symlink, own = 0)
  *         self._link = link
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Symlink.from_ptr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -4988,27 +5990,153 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink
   return __pyx_r;
 }
 
-/* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
- * def __setstate_cython__(self, __pyx_state):
+/* "pyrucfs/backends/cython/_rucfs.pyx":248
+ * 
+ *     @property
+ *     def common(self):             # <<<<<<<<<<<<<<
+ *         return Inode.from_ptr(&self._link.common)
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_cython__[] = "Symlink.__reduce_cython__(self)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common___get__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":249
+ *     @property
+ *     def common(self):
+ *         return Inode.from_ptr(&self._link.common)             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr((&__pyx_v_self->_link->common))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":248
+ * 
+ *     @property
+ *     def common(self):             # <<<<<<<<<<<<<<
+ *         return Inode.from_ptr(&self._link.common)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Symlink.common.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pyrucfs/backends/cython/_rucfs.pyx":252
+ * 
+ *     @property
+ *     def ref_inode_offset(self):             # <<<<<<<<<<<<<<
+ *         return self._link.ref_inode_offset
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset___get__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset___get__(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":253
+ *     @property
+ *     def ref_inode_offset(self):
+ *         return self._link.ref_inode_offset             # <<<<<<<<<<<<<<
+ * 
+ * @cython.final
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->_link->ref_inode_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":252
+ * 
+ *     @property
+ *     def ref_inode_offset(self):             # <<<<<<<<<<<<<<
+ *         return self._link.ref_inode_offset
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Symlink.ref_inode_offset.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_4__reduce_cython__[] = "Symlink.__reduce_cython__(self)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_4__reduce_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5019,11 +6147,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_c
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5031,7 +6159,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_c
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
@@ -5047,26 +6175,26 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_c
 
 /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstate_cython__[] = "Symlink.__setstate_cython__(self, __pyx_state)";
-static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6__setstate_cython__[] = "Symlink.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6__setstate_cython__(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5076,11 +6204,11 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstat
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":4
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5088,9 +6216,9 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstat
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
   /* function exit code */
@@ -5103,7 +6231,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstat
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":181
+/* "pyrucfs/backends/cython/_rucfs.pyx":261
  *     cdef rucfs_ctx_t * _ctx
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -5136,7 +6264,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":182
+  /* "pyrucfs/backends/cython/_rucfs.pyx":262
  * 
  *     def __cinit__(self):
  *         self._ctx = <rucfs_ctx_t *> PyMem_Malloc(sizeof(rucfs_ctx_t))             # <<<<<<<<<<<<<<
@@ -5145,7 +6273,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct
  */
   __pyx_v_self->_ctx = ((rucfs_ctx_t *)PyMem_Malloc((sizeof(rucfs_ctx_t))));
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":183
+  /* "pyrucfs/backends/cython/_rucfs.pyx":263
  *     def __cinit__(self):
  *         self._ctx = <rucfs_ctx_t *> PyMem_Malloc(sizeof(rucfs_ctx_t))
  *         if not self._ctx:             # <<<<<<<<<<<<<<
@@ -5155,16 +6283,16 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct
   __pyx_t_1 = ((!(__pyx_v_self->_ctx != 0)) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":184
+    /* "pyrucfs/backends/cython/_rucfs.pyx":264
  *         self._ctx = <rucfs_ctx_t *> PyMem_Malloc(sizeof(rucfs_ctx_t))
  *         if not self._ctx:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-    PyErr_NoMemory(); __PYX_ERR(0, 184, __pyx_L1_error)
+    PyErr_NoMemory(); __PYX_ERR(0, 264, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":183
+    /* "pyrucfs/backends/cython/_rucfs.pyx":263
  *     def __cinit__(self):
  *         self._ctx = <rucfs_ctx_t *> PyMem_Malloc(sizeof(rucfs_ctx_t))
  *         if not self._ctx:             # <<<<<<<<<<<<<<
@@ -5173,7 +6301,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":181
+  /* "pyrucfs/backends/cython/_rucfs.pyx":261
  *     cdef rucfs_ctx_t * _ctx
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -5192,7 +6320,7 @@ static int __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context___cinit__(struct
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":186
+/* "pyrucfs/backends/cython/_rucfs.pyx":266
  *             raise MemoryError
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -5216,7 +6344,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":187
+  /* "pyrucfs/backends/cython/_rucfs.pyx":267
  * 
  *     def __dealloc__(self):
  *         if self._ctx:             # <<<<<<<<<<<<<<
@@ -5226,7 +6354,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
   __pyx_t_1 = (__pyx_v_self->_ctx != 0);
   if (__pyx_t_1) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":188
+    /* "pyrucfs/backends/cython/_rucfs.pyx":268
  *     def __dealloc__(self):
  *         if self._ctx:
  *             PyMem_Free(self._ctx)             # <<<<<<<<<<<<<<
@@ -5235,7 +6363,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
  */
     PyMem_Free(__pyx_v_self->_ctx);
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":189
+    /* "pyrucfs/backends/cython/_rucfs.pyx":269
  *         if self._ctx:
  *             PyMem_Free(self._ctx)
  *             self._ctx = NULL             # <<<<<<<<<<<<<<
@@ -5244,7 +6372,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
  */
     __pyx_v_self->_ctx = NULL;
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":187
+    /* "pyrucfs/backends/cython/_rucfs.pyx":267
  * 
  *     def __dealloc__(self):
  *         if self._ctx:             # <<<<<<<<<<<<<<
@@ -5253,7 +6381,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":186
+  /* "pyrucfs/backends/cython/_rucfs.pyx":266
  *             raise MemoryError
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -5265,7 +6393,7 @@ static void __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_2__dealloc__(st
   __Pyx_RefNannyFinishContext();
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":191
+/* "pyrucfs/backends/cython/_rucfs.pyx":271
  *             self._ctx = NULL
  * 
  *     cpdef File fopen(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -5287,7 +6415,7 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fopen", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":194
+  /* "pyrucfs/backends/cython/_rucfs.pyx":274
  *         cdef rucfs_file_t* file
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5302,7 +6430,7 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":195
+        /* "pyrucfs/backends/cython/_rucfs.pyx":275
  *         cdef rucfs_errcode_t code
  *         with nogil:
  *             code = rucfs_fopen(self._ctx, <const char *>&path[0], &file)             # <<<<<<<<<<<<<<
@@ -5313,7 +6441,7 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
         __pyx_v_code = rucfs_fopen(__pyx_v_self->_ctx, ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_v_path.data) + __pyx_t_1)) ))))), (&__pyx_v_file));
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":194
+      /* "pyrucfs/backends/cython/_rucfs.pyx":274
  *         cdef rucfs_file_t* file
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5332,7 +6460,7 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":196
+  /* "pyrucfs/backends/cython/_rucfs.pyx":276
  *         with nogil:
  *             code = rucfs_fopen(self._ctx, <const char *>&path[0], &file)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -5342,20 +6470,20 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
   __pyx_t_2 = ((!(rucfs_ok(__pyx_v_code) != 0)) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":197
+    /* "pyrucfs/backends/cython/_rucfs.pyx":277
  *             code = rucfs_fopen(self._ctx, <const char *>&path[0], &file)
  *         if not rucfs_ok(code):
  *             raise FileNotFoundError             # <<<<<<<<<<<<<<
  *         return File.from_ptr(file)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_FileNotFoundError); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_FileNotFoundError); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 197, __pyx_L1_error)
+    __PYX_ERR(0, 277, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":196
+    /* "pyrucfs/backends/cython/_rucfs.pyx":276
  *         with nogil:
  *             code = rucfs_fopen(self._ctx, <const char *>&path[0], &file)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -5364,7 +6492,7 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":198
+  /* "pyrucfs/backends/cython/_rucfs.pyx":278
  *         if not rucfs_ok(code):
  *             raise FileNotFoundError
  *         return File.from_ptr(file)             # <<<<<<<<<<<<<<
@@ -5372,13 +6500,13 @@ static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *__pyx_f_7pyrucf
  *     cpdef inline Inode open_symlink(self, Symlink link):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_3 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_from_ptr(__pyx_v_file)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_from_ptr(__pyx_v_file)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":191
+  /* "pyrucfs/backends/cython/_rucfs.pyx":271
  *             self._ctx = NULL
  * 
  *     cpdef File fopen(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -5409,7 +6537,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_5fopen(PyO
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fopen (wrapper)", 0);
   assert(__pyx_arg_path); {
-    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 191, __pyx_L3_error)
+    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 271, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5433,8 +6561,8 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_4fopen(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fopen", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 191, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_fopen(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 271, __pyx_L1_error) }
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_fopen(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5452,7 +6580,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_4fopen(str
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":200
+/* "pyrucfs/backends/cython/_rucfs.pyx":280
  *         return File.from_ptr(file)
  * 
  *     cpdef inline Inode open_symlink(self, Symlink link):             # <<<<<<<<<<<<<<
@@ -5471,7 +6599,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("open_symlink", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":202
+  /* "pyrucfs/backends/cython/_rucfs.pyx":282
  *     cpdef inline Inode open_symlink(self, Symlink link):
  *         cdef rucfs_inode_t * node
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5486,7 +6614,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":203
+        /* "pyrucfs/backends/cython/_rucfs.pyx":283
  *         cdef rucfs_inode_t * node
  *         with nogil:
  *             node = rucfs_open_symlink(self._ctx, link._link)             # <<<<<<<<<<<<<<
@@ -5496,7 +6624,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
         __pyx_v_node = rucfs_open_symlink(__pyx_v_self->_ctx, __pyx_v_link->_link);
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":202
+      /* "pyrucfs/backends/cython/_rucfs.pyx":282
  *     cpdef inline Inode open_symlink(self, Symlink link):
  *         cdef rucfs_inode_t * node
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5515,7 +6643,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":204
+  /* "pyrucfs/backends/cython/_rucfs.pyx":284
  *         with nogil:
  *             node = rucfs_open_symlink(self._ctx, link._link)
  *         return Inode.from_ptr(node)             # <<<<<<<<<<<<<<
@@ -5523,13 +6651,13 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
  *     cpdef inline Inode open_directory(self, Directory d):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":200
+  /* "pyrucfs/backends/cython/_rucfs.pyx":280
  *         return File.from_ptr(file)
  * 
  *     cpdef inline Inode open_symlink(self, Symlink link):             # <<<<<<<<<<<<<<
@@ -5558,7 +6686,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_7open_syml
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("open_symlink (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_link), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Symlink, 1, "link", 0))) __PYX_ERR(0, 200, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_link), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Symlink, 1, "link", 0))) __PYX_ERR(0, 280, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_6open_symlink(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *)__pyx_v_self), ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)__pyx_v_link));
 
   /* function exit code */
@@ -5579,7 +6707,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_6open_syml
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("open_symlink", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_open_symlink(__pyx_v_self, __pyx_v_link, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_open_symlink(__pyx_v_self, __pyx_v_link, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5596,7 +6724,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_6open_syml
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":206
+/* "pyrucfs/backends/cython/_rucfs.pyx":286
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline Inode open_directory(self, Directory d):             # <<<<<<<<<<<<<<
@@ -5615,7 +6743,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("open_directory", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":208
+  /* "pyrucfs/backends/cython/_rucfs.pyx":288
  *     cpdef inline Inode open_directory(self, Directory d):
  *         cdef rucfs_inode_t * node
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5630,7 +6758,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":209
+        /* "pyrucfs/backends/cython/_rucfs.pyx":289
  *         cdef rucfs_inode_t * node
  *         with nogil:
  *             node = rucfs_open_directory(self._ctx, d.d)             # <<<<<<<<<<<<<<
@@ -5640,7 +6768,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
         __pyx_v_node = rucfs_open_directory(__pyx_v_self->_ctx, __pyx_v_d->d);
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":208
+      /* "pyrucfs/backends/cython/_rucfs.pyx":288
  *     cpdef inline Inode open_directory(self, Directory d):
  *         cdef rucfs_inode_t * node
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5659,7 +6787,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":210
+  /* "pyrucfs/backends/cython/_rucfs.pyx":290
  *         with nogil:
  *             node = rucfs_open_directory(self._ctx, d.d)
  *         return Inode.from_ptr(node)             # <<<<<<<<<<<<<<
@@ -5667,13 +6795,13 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
  *     cpdef inline  Inode path_to(self, const uint8_t[::1] path):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":206
+  /* "pyrucfs/backends/cython/_rucfs.pyx":286
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline Inode open_directory(self, Directory d):             # <<<<<<<<<<<<<<
@@ -5702,7 +6830,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_9open_dire
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("open_directory (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_d), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Directory, 1, "d", 0))) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_d), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Directory, 1, "d", 0))) __PYX_ERR(0, 286, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_8open_directory(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *)__pyx_v_self), ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)__pyx_v_d));
 
   /* function exit code */
@@ -5723,7 +6851,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_8open_dire
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("open_directory", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_open_directory(__pyx_v_self, __pyx_v_d, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_open_directory(__pyx_v_self, __pyx_v_d, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5740,7 +6868,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_8open_dire
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":212
+/* "pyrucfs/backends/cython/_rucfs.pyx":292
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline  Inode path_to(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -5762,7 +6890,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("path_to", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":216
+  /* "pyrucfs/backends/cython/_rucfs.pyx":296
  *             rucfs_inode_t* node
  *             rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5777,7 +6905,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":217
+        /* "pyrucfs/backends/cython/_rucfs.pyx":297
  *             rucfs_errcode_t code
  *         with nogil:
  *             code = rucfs_path_to(self._ctx, <const char *> &path[0], &node)             # <<<<<<<<<<<<<<
@@ -5788,7 +6916,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
         __pyx_v_code = rucfs_path_to(__pyx_v_self->_ctx, ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_v_path.data) + __pyx_t_1)) ))))), (&__pyx_v_node));
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":216
+      /* "pyrucfs/backends/cython/_rucfs.pyx":296
  *             rucfs_inode_t* node
  *             rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5807,7 +6935,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":218
+  /* "pyrucfs/backends/cython/_rucfs.pyx":298
  *         with nogil:
  *             code = rucfs_path_to(self._ctx, <const char *> &path[0], &node)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -5817,7 +6945,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
   __pyx_t_2 = ((!(rucfs_ok(__pyx_v_code) != 0)) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":219
+    /* "pyrucfs/backends/cython/_rucfs.pyx":299
  *             code = rucfs_path_to(self._ctx, <const char *> &path[0], &node)
  *         if not rucfs_ok(code):
  *             raise IOError             # <<<<<<<<<<<<<<
@@ -5825,9 +6953,9 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
  * 
  */
     __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-    __PYX_ERR(0, 219, __pyx_L1_error)
+    __PYX_ERR(0, 299, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":218
+    /* "pyrucfs/backends/cython/_rucfs.pyx":298
  *         with nogil:
  *             code = rucfs_path_to(self._ctx, <const char *> &path[0], &node)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -5836,7 +6964,7 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":220
+  /* "pyrucfs/backends/cython/_rucfs.pyx":300
  *         if not rucfs_ok(code):
  *             raise IOError
  *         return Inode.from_ptr(node)             # <<<<<<<<<<<<<<
@@ -5844,13 +6972,13 @@ static CYTHON_INLINE struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *
  *     cpdef inline bint exist(self, const uint8_t[::1] path):
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_3 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr(__pyx_v_node)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_t_3);
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":212
+  /* "pyrucfs/backends/cython/_rucfs.pyx":292
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline  Inode path_to(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -5881,7 +7009,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_11path_to(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("path_to (wrapper)", 0);
   assert(__pyx_arg_path); {
-    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 212, __pyx_L3_error)
+    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 292, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5905,8 +7033,8 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_10path_to(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("path_to", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 212, __pyx_L1_error) }
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_path_to(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 292, __pyx_L1_error) }
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_path_to(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5924,7 +7052,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_10path_to(
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":222
+/* "pyrucfs/backends/cython/_rucfs.pyx":302
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline bint exist(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -5945,7 +7073,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("exist", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":225
+  /* "pyrucfs/backends/cython/_rucfs.pyx":305
  *         cdef:
  *             rucfs_errcode_t  err
  *             bint code = False             # <<<<<<<<<<<<<<
@@ -5954,7 +7082,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
  */
   __pyx_v_code = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":226
+  /* "pyrucfs/backends/cython/_rucfs.pyx":306
  *             rucfs_errcode_t  err
  *             bint code = False
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5969,7 +7097,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":227
+        /* "pyrucfs/backends/cython/_rucfs.pyx":307
  *             bint code = False
  *         with nogil:
  *             code = rucfs_exist(self._ctx, <const char *> &path[0], &err)             # <<<<<<<<<<<<<<
@@ -5980,7 +7108,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
         __pyx_v_code = rucfs_exist(__pyx_v_self->_ctx, ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_v_path.data) + __pyx_t_1)) ))))), (&__pyx_v_err));
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":226
+      /* "pyrucfs/backends/cython/_rucfs.pyx":306
  *             rucfs_errcode_t  err
  *             bint code = False
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -5999,7 +7127,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":228
+  /* "pyrucfs/backends/cython/_rucfs.pyx":308
  *         with nogil:
  *             code = rucfs_exist(self._ctx, <const char *> &path[0], &err)
  *         if not rucfs_ok(err):             # <<<<<<<<<<<<<<
@@ -6009,7 +7137,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
   __pyx_t_2 = ((!(rucfs_ok(__pyx_v_err) != 0)) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":229
+    /* "pyrucfs/backends/cython/_rucfs.pyx":309
  *             code = rucfs_exist(self._ctx, <const char *> &path[0], &err)
  *         if not rucfs_ok(err):
  *             raise IOError             # <<<<<<<<<<<<<<
@@ -6017,9 +7145,9 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
  * 
  */
     __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-    __PYX_ERR(0, 229, __pyx_L1_error)
+    __PYX_ERR(0, 309, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":228
+    /* "pyrucfs/backends/cython/_rucfs.pyx":308
  *         with nogil:
  *             code = rucfs_exist(self._ctx, <const char *> &path[0], &err)
  *         if not rucfs_ok(err):             # <<<<<<<<<<<<<<
@@ -6028,7 +7156,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":230
+  /* "pyrucfs/backends/cython/_rucfs.pyx":310
  *         if not rucfs_ok(err):
  *             raise IOError
  *         return code             # <<<<<<<<<<<<<<
@@ -6038,7 +7166,7 @@ static CYTHON_INLINE int __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exi
   __pyx_r = __pyx_v_code;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":222
+  /* "pyrucfs/backends/cython/_rucfs.pyx":302
  *         return Inode.from_ptr(node)
  * 
  *     cpdef inline bint exist(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -6067,7 +7195,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_13exist(Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("exist (wrapper)", 0);
   assert(__pyx_arg_path); {
-    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 222, __pyx_L3_error)
+    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 302, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6091,8 +7219,8 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_12exist(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("exist", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 222, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exist(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (unlikely(!__pyx_v_path.memview)) { __Pyx_RaiseUnboundLocalError("path"); __PYX_ERR(0, 302, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exist(__pyx_v_self, __pyx_v_path, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6110,7 +7238,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_12exist(st
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":232
+/* "pyrucfs/backends/cython/_rucfs.pyx":312
  *         return code
  * 
  *     cpdef bytes inode_name(self,  Inode node):             # <<<<<<<<<<<<<<
@@ -6128,7 +7256,7 @@ static PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_inode_name(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inode_name", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":233
+  /* "pyrucfs/backends/cython/_rucfs.pyx":313
  * 
  *     cpdef bytes inode_name(self,  Inode node):
  *         return  <bytes>rucfs_inode_name(self._ctx, node.node)             # <<<<<<<<<<<<<<
@@ -6136,14 +7264,14 @@ static PyObject *__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_inode_name(
  *     def enumerate_path(self, const uint8_t[::1] path):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBytes_FromString(rucfs_inode_name(__pyx_v_self->_ctx, __pyx_v_node->node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBytes_FromString(rucfs_inode_name(__pyx_v_self->_ctx, __pyx_v_node->node)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject*)__pyx_t_1));
   __pyx_r = ((PyObject*)__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":232
+  /* "pyrucfs/backends/cython/_rucfs.pyx":312
  *         return code
  * 
  *     cpdef bytes inode_name(self,  Inode node):             # <<<<<<<<<<<<<<
@@ -6172,7 +7300,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_15inode_na
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("inode_name (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Inode, 1, "node", 0))) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_node), __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Inode, 1, "node", 0))) __PYX_ERR(0, 312, __pyx_L1_error)
   __pyx_r = __pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_14inode_name(((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *)__pyx_v_self), ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)__pyx_v_node));
 
   /* function exit code */
@@ -6193,7 +7321,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_14inode_na
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inode_name", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_inode_name(__pyx_v_self, __pyx_v_node, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_inode_name(__pyx_v_self, __pyx_v_node, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6211,7 +7339,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_14inode_na
 }
 static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":235
+/* "pyrucfs/backends/cython/_rucfs.pyx":315
  *         return  <bytes>rucfs_inode_name(self._ctx, node.node)
  * 
  *     def enumerate_path(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -6231,7 +7359,7 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_17enumerat
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("enumerate_path (wrapper)", 0);
   assert(__pyx_arg_path); {
-    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 235, __pyx_L3_error)
+    __pyx_v_path = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(__pyx_arg_path, 0); if (unlikely(!__pyx_v_path.memview)) __PYX_ERR(0, 315, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6258,7 +7386,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_16enumerat
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs___pyx_scope_struct__enumerate_path *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 235, __pyx_L1_error)
+    __PYX_ERR(0, 315, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -6267,7 +7395,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_16enumerat
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __pyx_cur_scope->__pyx_v_path = __pyx_v_path;
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_enumerate_path, __pyx_n_s_Context_enumerate_path, __pyx_n_s_pyrucfs_backends_cython__rucfs); if (unlikely(!gen)) __PYX_ERR(0, 235, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_enumerate_path, __pyx_n_s_Context_enumerate_path, __pyx_n_s_pyrucfs_backends_cython__rucfs); if (unlikely(!gen)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6315,9 +7443,9 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 315, __pyx_L1_error)
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":245
+  /* "pyrucfs/backends/cython/_rucfs.pyx":325
  *         cdef rucfs_path_enum_t* list_
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6332,7 +7460,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":246
+        /* "pyrucfs/backends/cython/_rucfs.pyx":326
  *         cdef rucfs_errcode_t code
  *         with nogil:
  *             code = rucfs_enumerate_path(self._ctx, <const char *> &path[0], NULL, &size)             # <<<<<<<<<<<<<<
@@ -6343,7 +7471,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
         __pyx_cur_scope->__pyx_v_code = rucfs_enumerate_path(__pyx_cur_scope->__pyx_v_self->_ctx, ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_cur_scope->__pyx_v_path.data) + __pyx_t_1)) ))))), NULL, (&__pyx_cur_scope->__pyx_v_size));
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":245
+      /* "pyrucfs/backends/cython/_rucfs.pyx":325
  *         cdef rucfs_path_enum_t* list_
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6362,7 +7490,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":247
+  /* "pyrucfs/backends/cython/_rucfs.pyx":327
  *         with nogil:
  *             code = rucfs_enumerate_path(self._ctx, <const char *> &path[0], NULL, &size)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6372,7 +7500,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
   __pyx_t_2 = ((!(rucfs_ok(__pyx_cur_scope->__pyx_v_code) != 0)) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":248
+    /* "pyrucfs/backends/cython/_rucfs.pyx":328
  *             code = rucfs_enumerate_path(self._ctx, <const char *> &path[0], NULL, &size)
  *         if not rucfs_ok(code):
  *             raise IOError             # <<<<<<<<<<<<<<
@@ -6380,9 +7508,9 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
  *         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)
  */
     __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-    __PYX_ERR(0, 248, __pyx_L1_error)
+    __PYX_ERR(0, 328, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":247
+    /* "pyrucfs/backends/cython/_rucfs.pyx":327
  *         with nogil:
  *             code = rucfs_enumerate_path(self._ctx, <const char *> &path[0], NULL, &size)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6391,7 +7519,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":250
+  /* "pyrucfs/backends/cython/_rucfs.pyx":330
  *             raise IOError
  * 
  *         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)             # <<<<<<<<<<<<<<
@@ -6400,7 +7528,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
  */
   __pyx_cur_scope->__pyx_v_list_ = ((rucfs_path_enum_t *)PyMem_Malloc(((sizeof(rucfs_path_enum_t)) * __pyx_cur_scope->__pyx_v_size)));
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":251
+  /* "pyrucfs/backends/cython/_rucfs.pyx":331
  * 
  *         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)
  *         if not list_:             # <<<<<<<<<<<<<<
@@ -6410,16 +7538,16 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
   __pyx_t_2 = ((!(__pyx_cur_scope->__pyx_v_list_ != 0)) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":252
+    /* "pyrucfs/backends/cython/_rucfs.pyx":332
  *         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)
  *         if not list_:
  *             raise MemoryError             # <<<<<<<<<<<<<<
  *         try:
  *             with nogil:
  */
-    PyErr_NoMemory(); __PYX_ERR(0, 252, __pyx_L1_error)
+    PyErr_NoMemory(); __PYX_ERR(0, 332, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":251
+    /* "pyrucfs/backends/cython/_rucfs.pyx":331
  * 
  *         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)
  *         if not list_:             # <<<<<<<<<<<<<<
@@ -6428,7 +7556,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":253
+  /* "pyrucfs/backends/cython/_rucfs.pyx":333
  *         if not list_:
  *             raise MemoryError
  *         try:             # <<<<<<<<<<<<<<
@@ -6437,7 +7565,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
  */
   /*try:*/ {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":254
+    /* "pyrucfs/backends/cython/_rucfs.pyx":334
  *             raise MemoryError
  *         try:
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -6452,7 +7580,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
         #endif
         /*try:*/ {
 
-          /* "pyrucfs/backends/cython/_rucfs.pyx":255
+          /* "pyrucfs/backends/cython/_rucfs.pyx":335
  *         try:
  *             with nogil:
  *                 code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)             # <<<<<<<<<<<<<<
@@ -6462,7 +7590,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
           __pyx_t_1 = 0;
           __pyx_cur_scope->__pyx_v_code = rucfs_enumerate_path(__pyx_cur_scope->__pyx_v_self->_ctx, ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_cur_scope->__pyx_v_path.data) + __pyx_t_1)) ))))), __pyx_cur_scope->__pyx_v_list_, (&__pyx_cur_scope->__pyx_v_size));
 
-          /* "pyrucfs/backends/cython/_rucfs.pyx":256
+          /* "pyrucfs/backends/cython/_rucfs.pyx":336
  *             with nogil:
  *                 code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)
  *                 if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6472,7 +7600,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
           __pyx_t_2 = ((!(rucfs_ok(__pyx_cur_scope->__pyx_v_code) != 0)) != 0);
           if (__pyx_t_2) {
 
-            /* "pyrucfs/backends/cython/_rucfs.pyx":257
+            /* "pyrucfs/backends/cython/_rucfs.pyx":337
  *                 code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)
  *                 if not rucfs_ok(code):
  *                     raise IOError             # <<<<<<<<<<<<<<
@@ -6485,7 +7613,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
                 #endif
                 /*try:*/ {
                   __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-                  __PYX_ERR(0, 257, __pyx_L17_error)
+                  __PYX_ERR(0, 337, __pyx_L17_error)
                 }
                 /*finally:*/ {
                   __pyx_L17_error: {
@@ -6497,7 +7625,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
                 }
             }
 
-            /* "pyrucfs/backends/cython/_rucfs.pyx":256
+            /* "pyrucfs/backends/cython/_rucfs.pyx":336
  *             with nogil:
  *                 code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)
  *                 if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6507,7 +7635,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
           }
         }
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":254
+        /* "pyrucfs/backends/cython/_rucfs.pyx":334
  *             raise MemoryError
  *         try:
  *             with nogil:             # <<<<<<<<<<<<<<
@@ -6533,7 +7661,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
         }
     }
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":258
+    /* "pyrucfs/backends/cython/_rucfs.pyx":338
  *                 if not rucfs_ok(code):
  *                     raise IOError
  *             for i in range(size):             # <<<<<<<<<<<<<<
@@ -6545,14 +7673,14 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_cur_scope->__pyx_v_i = __pyx_t_5;
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":259
+      /* "pyrucfs/backends/cython/_rucfs.pyx":339
  *                     raise IOError
  *             for i in range(size):
  *                 yield Path.from_ptr( &list_[i])             # <<<<<<<<<<<<<<
  *         finally:
  *             PyMem_Free(list_)
  */
-      __pyx_t_6 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4Path_from_ptr((&(__pyx_cur_scope->__pyx_v_list_[__pyx_cur_scope->__pyx_v_i])))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 259, __pyx_L10_error)
+      __pyx_t_6 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4Path_from_ptr((&(__pyx_cur_scope->__pyx_v_list_[__pyx_cur_scope->__pyx_v_i])))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 339, __pyx_L10_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_r = __pyx_t_6;
       __pyx_t_6 = 0;
@@ -6569,11 +7697,11 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
       __pyx_t_3 = __pyx_cur_scope->__pyx_t_0;
       __pyx_t_4 = __pyx_cur_scope->__pyx_t_1;
       __pyx_t_5 = __pyx_cur_scope->__pyx_t_2;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 259, __pyx_L10_error)
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 339, __pyx_L10_error)
     }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":261
+  /* "pyrucfs/backends/cython/_rucfs.pyx":341
  *                 yield Path.from_ptr( &list_[i])
  *         finally:
  *             PyMem_Free(list_)             # <<<<<<<<<<<<<<
@@ -6620,7 +7748,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":235
+  /* "pyrucfs/backends/cython/_rucfs.pyx":315
  *         return  <bytes>rucfs_inode_name(self._ctx, node.node)
  * 
  *     def enumerate_path(self, const uint8_t[::1] path):             # <<<<<<<<<<<<<<
@@ -6645,7 +7773,7 @@ static PyObject *__pyx_gb_7pyrucfs_8backends_6cython_6_rucfs_7Context_18generato
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":264
+/* "pyrucfs/backends/cython/_rucfs.pyx":344
  * 
  *     @staticmethod
  *     def load(const uint8_t[::1] data):             # <<<<<<<<<<<<<<
@@ -6684,18 +7812,18 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Context_20load(CYT
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "load") < 0)) __PYX_ERR(0, 264, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "load") < 0)) __PYX_ERR(0, 344, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
     }
-    __pyx_v_data = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(values[0], 0); if (unlikely(!__pyx_v_data.memview)) __PYX_ERR(0, 264, __pyx_L3_error)
+    __pyx_v_data = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(values[0], 0); if (unlikely(!__pyx_v_data.memview)) __PYX_ERR(0, 344, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("load", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 264, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("load", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 344, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.Context.load", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6721,19 +7849,19 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":270
+  /* "pyrucfs/backends/cython/_rucfs.pyx":350
  *         :return:
  *         """
  *         cdef Context self = Context()             # <<<<<<<<<<<<<<
  *         cdef rucfs_errcode_t code
  *         with nogil:
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_self = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":272
+  /* "pyrucfs/backends/cython/_rucfs.pyx":352
  *         cdef Context self = Context()
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6748,7 +7876,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
       #endif
       /*try:*/ {
 
-        /* "pyrucfs/backends/cython/_rucfs.pyx":273
+        /* "pyrucfs/backends/cython/_rucfs.pyx":353
  *         cdef rucfs_errcode_t code
  *         with nogil:
  *             code = rucfs_load(<uint8_t*>&data[0],self._ctx)             # <<<<<<<<<<<<<<
@@ -6759,7 +7887,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
         __pyx_v_code = rucfs_load(((uint8_t *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_v_data.data) + __pyx_t_2)) ))))), __pyx_v_self->_ctx);
       }
 
-      /* "pyrucfs/backends/cython/_rucfs.pyx":272
+      /* "pyrucfs/backends/cython/_rucfs.pyx":352
  *         cdef Context self = Context()
  *         cdef rucfs_errcode_t code
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -6778,7 +7906,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
       }
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":274
+  /* "pyrucfs/backends/cython/_rucfs.pyx":354
  *         with nogil:
  *             code = rucfs_load(<uint8_t*>&data[0],self._ctx)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6788,7 +7916,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
   __pyx_t_3 = ((!(rucfs_ok(__pyx_v_code) != 0)) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":275
+    /* "pyrucfs/backends/cython/_rucfs.pyx":355
  *             code = rucfs_load(<uint8_t*>&data[0],self._ctx)
  *         if not rucfs_ok(code):
  *             raise IOError             # <<<<<<<<<<<<<<
@@ -6796,9 +7924,9 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
  * 
  */
     __Pyx_Raise(__pyx_builtin_IOError, 0, 0, 0);
-    __PYX_ERR(0, 275, __pyx_L1_error)
+    __PYX_ERR(0, 355, __pyx_L1_error)
 
-    /* "pyrucfs/backends/cython/_rucfs.pyx":274
+    /* "pyrucfs/backends/cython/_rucfs.pyx":354
  *         with nogil:
  *             code = rucfs_load(<uint8_t*>&data[0],self._ctx)
  *         if not rucfs_ok(code):             # <<<<<<<<<<<<<<
@@ -6807,7 +7935,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
  */
   }
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":276
+  /* "pyrucfs/backends/cython/_rucfs.pyx":356
  *         if not rucfs_ok(code):
  *             raise IOError
  *         return self             # <<<<<<<<<<<<<<
@@ -6819,7 +7947,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":264
+  /* "pyrucfs/backends/cython/_rucfs.pyx":344
  * 
  *     @staticmethod
  *     def load(const uint8_t[::1] data):             # <<<<<<<<<<<<<<
@@ -6840,7 +7968,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_19load(__P
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":279
+/* "pyrucfs/backends/cython/_rucfs.pyx":359
  * 
  *     @property
  *     def rootdir(self):             # <<<<<<<<<<<<<<
@@ -6870,7 +7998,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_7rootdir__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":280
+  /* "pyrucfs/backends/cython/_rucfs.pyx":360
  *     @property
  *     def rootdir(self):
  *         return Directory.from_ptr( self._ctx.rootdir)             # <<<<<<<<<<<<<<
@@ -6878,13 +8006,13 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_7rootdir__
  * cpdef inline size_t normalize_path(uint8_t[::1] buf, const uint8_t[::1] s, bint endslash) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_9Directory_from_ptr(__pyx_v_self->_ctx->rootdir)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_9Directory_from_ptr(__pyx_v_self->_ctx->rootdir)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":279
+  /* "pyrucfs/backends/cython/_rucfs.pyx":359
  * 
  *     @property
  *     def rootdir(self):             # <<<<<<<<<<<<<<
@@ -6938,7 +8066,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_21__reduce
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6995,7 +8123,7 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_23__setsta
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7018,11 +8146,12 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_7Context_23__setsta
   return __pyx_r;
 }
 
-/* "pyrucfs/backends/cython/_rucfs.pyx":282
+/* "pyrucfs/backends/cython/_rucfs.pyx":362
  *         return Directory.from_ptr( self._ctx.rootdir)
  * 
  * cpdef inline size_t normalize_path(uint8_t[::1] buf, const uint8_t[::1] s, bint endslash) nogil:             # <<<<<<<<<<<<<<
  *     return rucfs_normalize_path(<char*>&buf[0],<const char*>&s[0], endslash)
+ * 
  */
 
 static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_1normalize_path(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
@@ -7031,21 +8160,24 @@ static CYTHON_INLINE size_t __pyx_f_7pyrucfs_8backends_6cython_6_rucfs_normalize
   Py_ssize_t __pyx_t_1;
   Py_ssize_t __pyx_t_2;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":283
+  /* "pyrucfs/backends/cython/_rucfs.pyx":363
  * 
  * cpdef inline size_t normalize_path(uint8_t[::1] buf, const uint8_t[::1] s, bint endslash) nogil:
  *     return rucfs_normalize_path(<char*>&buf[0],<const char*>&s[0], endslash)             # <<<<<<<<<<<<<<
+ * 
+ * cdef rucfs_inode_symlink_t l
  */
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_r = rucfs_normalize_path(((char *)(&(*((uint8_t *) ( /* dim=0 */ ((char *) (((uint8_t *) __pyx_v_buf.data) + __pyx_t_1)) ))))), ((char const *)(&(*((uint8_t const  *) ( /* dim=0 */ ((char *) (((uint8_t const  *) __pyx_v_s.data) + __pyx_t_2)) ))))), __pyx_v_endslash);
   goto __pyx_L0;
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":282
+  /* "pyrucfs/backends/cython/_rucfs.pyx":362
  *         return Directory.from_ptr( self._ctx.rootdir)
  * 
  * cpdef inline size_t normalize_path(uint8_t[::1] buf, const uint8_t[::1] s, bint endslash) nogil:             # <<<<<<<<<<<<<<
  *     return rucfs_normalize_path(<char*>&buf[0],<const char*>&s[0], endslash)
+ * 
  */
 
   /* function exit code */
@@ -7091,17 +8223,17 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_1normalize_path(PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_s)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, 1); __PYX_ERR(0, 282, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, 1); __PYX_ERR(0, 362, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_endslash)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, 2); __PYX_ERR(0, 282, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, 2); __PYX_ERR(0, 362, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "normalize_path") < 0)) __PYX_ERR(0, 282, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "normalize_path") < 0)) __PYX_ERR(0, 362, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -7110,13 +8242,13 @@ static PyObject *__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_1normalize_path(PyO
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_buf = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_buf.memview)) __PYX_ERR(0, 282, __pyx_L3_error)
-    __pyx_v_s = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(values[1], 0); if (unlikely(!__pyx_v_s.memview)) __PYX_ERR(0, 282, __pyx_L3_error)
-    __pyx_v_endslash = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_endslash == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 282, __pyx_L3_error)
+    __pyx_v_buf = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_buf.memview)) __PYX_ERR(0, 362, __pyx_L3_error)
+    __pyx_v_s = __Pyx_PyObject_to_MemoryviewSlice_dc_nn_uint8_t__const__(values[1], 0); if (unlikely(!__pyx_v_s.memview)) __PYX_ERR(0, 362, __pyx_L3_error)
+    __pyx_v_endslash = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_endslash == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 362, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 282, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("normalize_path", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 362, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyrucfs.backends.cython._rucfs.normalize_path", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7138,9 +8270,9 @@ static PyObject *__pyx_pf_7pyrucfs_8backends_6cython_6_rucfs_normalize_path(CYTH
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("normalize_path", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_buf.memview)) { __Pyx_RaiseUnboundLocalError("buf"); __PYX_ERR(0, 282, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_s.memview)) { __Pyx_RaiseUnboundLocalError("s"); __PYX_ERR(0, 282, __pyx_L1_error) }
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_normalize_path(__pyx_v_buf, __pyx_v_s, __pyx_v_endslash, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
+  if (unlikely(!__pyx_v_buf.memview)) { __Pyx_RaiseUnboundLocalError("buf"); __PYX_ERR(0, 362, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_s.memview)) { __Pyx_RaiseUnboundLocalError("s"); __PYX_ERR(0, 362, __pyx_L1_error) }
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_normalize_path(__pyx_v_buf, __pyx_v_s, __pyx_v_endslash, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7362,7 +8494,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if itemsize <= 0:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 134, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7394,7 +8526,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if not isinstance(format, bytes):
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 137, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 137, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7521,7 +8653,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  * 
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 149, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7795,7 +8927,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *             if self.dtype_is_object:
  */
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 177, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 177, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_Raise(__pyx_t_10, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -8039,7 +9171,7 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         info.buf = self.data
  *         info.len = self.len
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 193, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8773,7 +9905,7 @@ static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __p
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8829,7 +9961,7 @@ static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10558,7 +11690,7 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setit
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 420, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 420, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11606,7 +12738,7 @@ static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview
  *         else:
  *             if len(self.view.format) == 1:
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 497, __pyx_L5_except_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 497, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11968,7 +13100,7 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_8__getbu
  * 
  *         if flags & PyBUF_ND:
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 522, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 522, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12517,7 +13649,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(st
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 572, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 572, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -12634,7 +13766,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get_
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->view.ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 579, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__26, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 579, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__29, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 579, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
@@ -13672,7 +14804,7 @@ static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struc
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -13728,7 +14860,7 @@ static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED st
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14085,9 +15217,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
         __Pyx_GOTREF(__pyx_t_7);
         { Py_ssize_t __pyx_temp;
           for (__pyx_temp=0; __pyx_temp < ((__pyx_v_ndim - __pyx_t_8) + 1); __pyx_temp++) {
-            __Pyx_INCREF(__pyx_slice__29);
-            __Pyx_GIVEREF(__pyx_slice__29);
-            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__29);
+            __Pyx_INCREF(__pyx_slice__32);
+            __Pyx_GIVEREF(__pyx_slice__32);
+            PyList_SET_ITEM(__pyx_t_7, __pyx_temp, __pyx_slice__32);
           }
         }
         __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_7); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 684, __pyx_L1_error)
@@ -14120,7 +15252,7 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
  *         else:
  */
       /*else*/ {
-        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__29); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 687, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_result, __pyx_slice__32); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 687, __pyx_L1_error)
       }
       __pyx_L7:;
 
@@ -14260,9 +15392,9 @@ static PyObject *_unellipsify(PyObject *__pyx_v_index, int __pyx_v_ndim) {
     __Pyx_GOTREF(__pyx_t_3);
     { Py_ssize_t __pyx_temp;
       for (__pyx_temp=0; __pyx_temp < __pyx_v_nslices; __pyx_temp++) {
-        __Pyx_INCREF(__pyx_slice__29);
-        __Pyx_GIVEREF(__pyx_slice__29);
-        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__29);
+        __Pyx_INCREF(__pyx_slice__32);
+        __Pyx_GIVEREF(__pyx_slice__32);
+        PyList_SET_ITEM(__pyx_t_3, __pyx_temp, __pyx_slice__32);
       }
     }
     __pyx_t_9 = __Pyx_PyList_Extend(__pyx_v_result, __pyx_t_3); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(1, 698, __pyx_L1_error)
@@ -14389,7 +15521,7 @@ static PyObject *assert_direct_dimensions(Py_ssize_t *__pyx_v_suboffsets, int __
  * 
  * 
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 705, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 705, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -16573,7 +17705,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -16629,7 +17761,7 @@ static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUS
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -19906,7 +21038,7 @@ static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSE
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__33, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_tuple__36, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -20273,7 +21405,7 @@ static PyTypeObject __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER, /*tp_flags*/
-  0, /*tp_doc*/
+  "\n    internal use\n    ", /*tp_doc*/
   0, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -20592,7 +21724,7 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Inode __pyx_vt
 static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *__pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Inode[8];
 static int __pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Inode = 0;
 
-static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Inode(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Inode(PyTypeObject *t, PyObject *a, PyObject *k) {
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *p;
   PyObject *o;
   if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Inode > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode)))) {
@@ -20605,10 +21737,22 @@ static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Inode(PyTypeObj
   }
   p = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)o);
   p->__pyx_vtab = __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Inode;
+  if (unlikely(__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
 }
 
 static void __pyx_tp_dealloc_7pyrucfs_8backends_6cython_6_rucfs_Inode(PyObject *o) {
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
   if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Inode < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode)))) {
     __pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Inode[__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Inode++] = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *)o);
   } else {
@@ -20625,8 +21769,8 @@ static PyObject *__pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_5Inode_name_of
 }
 
 static PyMethodDef __pyx_methods_7pyrucfs_8backends_6cython_6_rucfs_Inode[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_1__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode___reduce_cython__},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_3__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_2__setstate_cython__},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_5__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_4__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_5Inode_7__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_5Inode_6__setstate_cython__},
   {0, 0, 0, 0}
 };
 
@@ -20712,7 +21856,7 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Directory __py
 static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *__pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Directory[8];
 static int __pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Directory = 0;
 
-static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Directory(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Directory(PyTypeObject *t, PyObject *a, PyObject *k) {
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *p;
   PyObject *o;
   if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Directory > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory)))) {
@@ -20725,10 +21869,22 @@ static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Directory(PyTyp
   }
   p = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)o);
   p->__pyx_vtab = __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Directory;
+  if (unlikely(__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
 }
 
 static void __pyx_tp_dealloc_7pyrucfs_8backends_6cython_6_rucfs_Directory(PyObject *o) {
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
   if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Directory < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory)))) {
     __pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Directory[__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Directory++] = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *)o);
   } else {
@@ -20749,8 +21905,8 @@ static PyObject *__pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_9Directory_ref
 }
 
 static PyMethodDef __pyx_methods_7pyrucfs_8backends_6cython_6_rucfs_Directory[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_1__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory___reduce_cython__},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_3__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_2__setstate_cython__},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_5__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_4__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_9Directory_7__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_9Directory_6__setstate_cython__},
   {0, 0, 0, 0}
 };
 
@@ -20837,7 +21993,7 @@ static struct __pyx_vtabstruct_7pyrucfs_8backends_6cython_6_rucfs_Symlink __pyx_
 static struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *__pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Symlink[8];
 static int __pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Symlink = 0;
 
-static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Symlink(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Symlink(PyTypeObject *t, PyObject *a, PyObject *k) {
   struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *p;
   PyObject *o;
   if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Symlink > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink)))) {
@@ -20850,10 +22006,22 @@ static PyObject *__pyx_tp_new_7pyrucfs_8backends_6cython_6_rucfs_Symlink(PyTypeO
   }
   p = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)o);
   p->__pyx_vtab = __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Symlink;
+  if (unlikely(__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
 }
 
 static void __pyx_tp_dealloc_7pyrucfs_8backends_6cython_6_rucfs_Symlink(PyObject *o) {
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
   if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Symlink < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink)))) {
     __pyx_freelist_7pyrucfs_8backends_6cython_6_rucfs_Symlink[__pyx_freecount_7pyrucfs_8backends_6cython_6_rucfs_Symlink++] = ((struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *)o);
   } else {
@@ -20861,10 +22029,24 @@ static void __pyx_tp_dealloc_7pyrucfs_8backends_6cython_6_rucfs_Symlink(PyObject
   }
 }
 
+static PyObject *__pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_common(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6common_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_ref_inode_offset(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_16ref_inode_offset_1__get__(o);
+}
+
 static PyMethodDef __pyx_methods_7pyrucfs_8backends_6cython_6_rucfs_Symlink[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_1__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink___reduce_cython__},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_3__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_2__setstate_cython__},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_5__reduce_cython__, METH_NOARGS, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_4__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_7__setstate_cython__, METH_O, __pyx_doc_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_6__setstate_cython__},
   {0, 0, 0, 0}
+};
+
+static struct PyGetSetDef __pyx_getsets_7pyrucfs_8backends_6cython_6_rucfs_Symlink[] = {
+  {(char *)"common", __pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_common, 0, (char *)0, 0},
+  {(char *)"ref_inode_offset", __pyx_getprop_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_ref_inode_offset, 0, (char *)0, 0},
+  {0, 0, 0, 0, 0}
 };
 
 static PyTypeObject __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink = {
@@ -20907,7 +22089,7 @@ static PyTypeObject __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink = {
   0, /*tp_iternext*/
   __pyx_methods_7pyrucfs_8backends_6cython_6_rucfs_Symlink, /*tp_methods*/
   0, /*tp_members*/
-  0, /*tp_getset*/
+  __pyx_getsets_7pyrucfs_8backends_6cython_6_rucfs_Symlink, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -21975,6 +23157,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Empty_shape_tuple_for_cython_arr, __pyx_k_Empty_shape_tuple_for_cython_arr, sizeof(__pyx_k_Empty_shape_tuple_for_cython_arr), 0, 0, 1, 0},
   {&__pyx_n_s_File, __pyx_k_File, sizeof(__pyx_k_File), 0, 0, 1, 1},
   {&__pyx_n_s_FileNotFoundError, __pyx_k_FileNotFoundError, sizeof(__pyx_k_FileNotFoundError), 0, 0, 1, 1},
+  {&__pyx_n_s_INODE_DIRECTORY, __pyx_k_INODE_DIRECTORY, sizeof(__pyx_k_INODE_DIRECTORY), 0, 0, 1, 1},
+  {&__pyx_n_s_INODE_FILE, __pyx_k_INODE_FILE, sizeof(__pyx_k_INODE_FILE), 0, 0, 1, 1},
+  {&__pyx_n_s_INODE_SYMLINK, __pyx_k_INODE_SYMLINK, sizeof(__pyx_k_INODE_SYMLINK), 0, 0, 1, 1},
   {&__pyx_n_s_IOError, __pyx_k_IOError, sizeof(__pyx_k_IOError), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_0x_x_vs_0, __pyx_k_Incompatible_checksums_0x_x_vs_0, sizeof(__pyx_k_Incompatible_checksums_0x_x_vs_0), 0, 0, 1, 0},
   {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
@@ -22028,6 +23213,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_item_count, __pyx_k_item_count, sizeof(__pyx_k_item_count), 0, 0, 1, 1},
   {&__pyx_n_s_itemsize, __pyx_k_itemsize, sizeof(__pyx_k_itemsize), 0, 0, 1, 1},
   {&__pyx_kp_s_itemsize_0_for_cython_array, __pyx_k_itemsize_0_for_cython_array, sizeof(__pyx_k_itemsize_0_for_cython_array), 0, 0, 1, 0},
   {&__pyx_n_s_load, __pyx_k_load, sizeof(__pyx_k_load), 0, 0, 1, 1},
@@ -22036,10 +23222,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_mode, __pyx_k_mode, sizeof(__pyx_k_mode), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
+  {&__pyx_n_s_name_offset, __pyx_k_name_offset, sizeof(__pyx_k_name_offset), 0, 0, 1, 1},
   {&__pyx_n_s_ndim, __pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
+  {&__pyx_n_s_own, __pyx_k_own, sizeof(__pyx_k_own), 0, 0, 1, 1},
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pyrucfs_backends_cython__rucfs, __pyx_k_pyrucfs_backends_cython__rucfs, sizeof(__pyx_k_pyrucfs_backends_cython__rucfs), 0, 0, 1, 1},
@@ -22056,12 +23244,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_ref_inode_offset, __pyx_k_ref_inode_offset, sizeof(__pyx_k_ref_inode_offset), 0, 0, 1, 1},
   {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
-  {&__pyx_kp_s_self__link_cannot_be_converted_t, __pyx_k_self__link_cannot_be_converted_t, sizeof(__pyx_k_self__link_cannot_be_converted_t), 0, 0, 1, 0},
-  {&__pyx_kp_s_self_d_cannot_be_converted_to_a, __pyx_k_self_d_cannot_be_converted_to_a, sizeof(__pyx_k_self_d_cannot_be_converted_to_a), 0, 0, 1, 0},
   {&__pyx_kp_s_self_file_cannot_be_converted_to, __pyx_k_self_file_cannot_be_converted_to, sizeof(__pyx_k_self_file_cannot_be_converted_to), 0, 0, 1, 0},
-  {&__pyx_kp_s_self_node_cannot_be_converted_to, __pyx_k_self_node_cannot_be_converted_to, sizeof(__pyx_k_self_node_cannot_be_converted_to), 0, 0, 1, 0},
   {&__pyx_kp_s_self_path_cannot_be_converted_to, __pyx_k_self_path_cannot_be_converted_to, sizeof(__pyx_k_self_path_cannot_be_converted_to), 0, 0, 1, 0},
   {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
@@ -22077,9 +23263,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_strided_and_indirect, __pyx_k_strided_and_indirect, sizeof(__pyx_k_strided_and_indirect), 0, 0, 1, 0},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_struct, __pyx_k_struct, sizeof(__pyx_k_struct), 0, 0, 1, 1},
+  {&__pyx_n_s_symlink, __pyx_k_symlink, sizeof(__pyx_k_symlink), 0, 0, 1, 1},
   {&__pyx_n_u_symlink, __pyx_k_symlink, sizeof(__pyx_k_symlink), 0, 1, 0, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
+  {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
   {&__pyx_kp_s_unable_to_allocate_array_data, __pyx_k_unable_to_allocate_array_data, sizeof(__pyx_k_unable_to_allocate_array_data), 0, 0, 1, 0},
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
@@ -22087,11 +23275,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 263, __pyx_L1_error)
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 49, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
-  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 56, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 338, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 134, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 152, __pyx_L1_error)
   __pyx_builtin_Ellipsis = __Pyx_GetBuiltinName(__pyx_n_s_Ellipsis); if (!__pyx_builtin_Ellipsis) __PYX_ERR(1, 406, __pyx_L1_error)
@@ -22165,58 +23353,39 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_self_node_cannot_be_converted_to); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
-
-  /* "(tree fragment)":4
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.node cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
- */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_self_node_cannot_be_converted_to); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "(tree fragment)":2
- * def __reduce_cython__(self):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_self_d_cannot_be_converted_to_a); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "(tree fragment)":4
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self.d cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
- */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_self_d_cannot_be_converted_to_a); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_self__link_cannot_be_converted_t); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
   /* "(tree fragment)":4
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("self._link cannot be converted to a Python object for pickling")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_self__link_cannot_be_converted_t); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
@@ -22226,18 +23395,37 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__13);
-  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
   /* "View.MemoryView":134
  * 
@@ -22246,9 +23434,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if itemsize <= 0:
  */
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(1, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__15);
-  __Pyx_GIVEREF(__pyx_tuple__15);
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(1, 134, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
 
   /* "View.MemoryView":137
  * 
@@ -22257,9 +23445,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if not isinstance(format, bytes):
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 137, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__16);
-  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(1, 137, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
 
   /* "View.MemoryView":149
  * 
@@ -22268,9 +23456,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(1, 149, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(1, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
 
   /* "View.MemoryView":177
  *             self.data = <char *>malloc(self.len)
@@ -22279,9 +23467,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             if self.dtype_is_object:
  */
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(1, 177, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__18);
-  __Pyx_GIVEREF(__pyx_tuple__18);
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(1, 177, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
 
   /* "View.MemoryView":193
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
@@ -22290,9 +23478,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         info.buf = self.data
  *         info.len = self.len
  */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(1, 193, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 193, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -22300,18 +23488,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__21);
-  __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
 
   /* "View.MemoryView":420
  *     def __setitem__(memoryview self, object index, object value):
@@ -22320,9 +23508,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(1, 420, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 420, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
 
   /* "View.MemoryView":497
  *             result = struct.unpack(self.view.format, bytesitem)
@@ -22331,9 +23519,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         else:
  *             if len(self.view.format) == 1:
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(1, 497, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__23);
-  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(1, 497, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
 
   /* "View.MemoryView":522
  *     def __getbuffer__(self, Py_buffer *info, int flags):
@@ -22342,9 +23530,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if flags & PyBUF_ND:
  */
-  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(1, 522, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 522, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
 
   /* "View.MemoryView":572
  *         if self.view.strides == NULL:
@@ -22353,9 +23541,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 572, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(1, 572, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
 
   /* "View.MemoryView":579
  *     def suboffsets(self):
@@ -22364,12 +23552,12 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([suboffset for suboffset in self.view.suboffsets[:self.view.ndim]])
  */
-  __pyx_tuple__26 = PyTuple_New(1); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(1, 579, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
+  __pyx_tuple__29 = PyTuple_New(1); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(1, 579, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_INCREF(__pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_int_neg_1);
-  PyTuple_SET_ITEM(__pyx_tuple__26, 0, __pyx_int_neg_1);
-  __Pyx_GIVEREF(__pyx_tuple__26);
+  PyTuple_SET_ITEM(__pyx_tuple__29, 0, __pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_tuple__29);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -22377,18 +23565,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
 
   /* "View.MemoryView":684
  *         if item is Ellipsis:
@@ -22397,9 +23585,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *                 seen_ellipsis = True
  *             else:
  */
-  __pyx_slice__29 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__29)) __PYX_ERR(1, 684, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__29);
-  __Pyx_GIVEREF(__pyx_slice__29);
+  __pyx_slice__32 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__32)) __PYX_ERR(1, 684, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__32);
+  __Pyx_GIVEREF(__pyx_slice__32);
 
   /* "View.MemoryView":705
  *     for suboffset in suboffsets[:ndim]:
@@ -22408,9 +23596,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(1, 705, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__30);
-  __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(1, 705, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -22418,33 +23606,33 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__32);
-  __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_tuple__33 = PyTuple_Pack(3, __pyx_int_184977713, __pyx_int_136983863, __pyx_int_112105877); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_tuple__36 = PyTuple_Pack(3, __pyx_int_184977713, __pyx_int_136983863, __pyx_int_112105877); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":264
+  /* "pyrucfs/backends/cython/_rucfs.pyx":344
  * 
  *     @staticmethod
  *     def load(const uint8_t[::1] data):             # <<<<<<<<<<<<<<
  *         """
  *         keep a refcount to data!
  */
-  __pyx_tuple__34 = PyTuple_Pack(3, __pyx_n_s_data, __pyx_n_s_self, __pyx_n_s_code); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 264, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__34);
-  __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyrucfs_backends_cython__rucfs_p, __pyx_n_s_load, 264, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(3, __pyx_n_s_data, __pyx_n_s_self, __pyx_n_s_code); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 344, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pyrucfs_backends_cython__rucfs_p, __pyx_n_s_load, 344, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 344, __pyx_L1_error)
 
   /* "View.MemoryView":287
  *         return self.name
@@ -22453,9 +23641,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(1, 287, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__36);
-  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
 
   /* "View.MemoryView":288
  * 
@@ -22464,9 +23652,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(1, 288, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__40);
+  __Pyx_GIVEREF(__pyx_tuple__40);
 
   /* "View.MemoryView":289
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -22475,9 +23663,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(1, 289, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__38);
-  __Pyx_GIVEREF(__pyx_tuple__38);
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 289, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
 
   /* "View.MemoryView":292
  * 
@@ -22486,9 +23674,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 292, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(1, 292, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__42);
+  __Pyx_GIVEREF(__pyx_tuple__42);
 
   /* "View.MemoryView":293
  * 
@@ -22497,19 +23685,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(1, 293, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__40);
-  __Pyx_GIVEREF(__pyx_tuple__40);
+  __pyx_tuple__43 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(1, 293, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__41 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__44);
+  __Pyx_GIVEREF(__pyx_tuple__44);
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -22574,81 +23762,81 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_SuperBlock, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_SuperBlock, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_SuperBlock;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_File = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_File;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_File.from_ptr = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *(*)(rucfs_file_t *))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_from_ptr;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_File.close = (PyObject *(*)(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *, int __pyx_skip_dispatch))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4File_close;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_File, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_File, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File) < 0) __PYX_ERR(0, 59, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_File = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_File;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Path = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Path;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Path.from_ptr = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Path *(*)(rucfs_path_enum_t *))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_4Path_from_ptr;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Path, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Path, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Path = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Path;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Inode = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Inode;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Inode.from_ptr = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *(*)(rucfs_inode_t *))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_5Inode_from_ptr;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Inode, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Inode, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode) < 0) __PYX_ERR(0, 136, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Inode = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Inode;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Directory = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Directory;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Directory.from_ptr = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Directory *(*)(rucfs_inode_directory_t *))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_9Directory_from_ptr;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Directory, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Directory, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Directory = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Directory;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Symlink = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Symlink;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Symlink.from_ptr = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Symlink *(*)(rucfs_inode_symlink_t *))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_from_ptr;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Symlink, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Symlink, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Symlink = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Symlink;
   __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Context = &__pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Context;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Context.fopen = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_File *(*)(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *, __Pyx_memviewslice, int __pyx_skip_dispatch))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_fopen;
@@ -22657,18 +23845,18 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Context.path_to = (struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *(*)(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *, __Pyx_memviewslice, int __pyx_skip_dispatch))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_path_to;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Context.exist = (int (*)(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *, __Pyx_memviewslice, int __pyx_skip_dispatch))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_exist;
   __pyx_vtable_7pyrucfs_8backends_6cython_6_rucfs_Context.inode_name = (PyObject *(*)(struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Context *, struct __pyx_obj_7pyrucfs_8backends_6cython_6_rucfs_Inode *, int __pyx_skip_dispatch))__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Context_inode_name;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_dictoffset && __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
-  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Context, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context.tp_dict, __pyx_vtabptr_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Context, (PyObject *)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   __pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context = &__pyx_type_7pyrucfs_8backends_6cython_6_rucfs_Context;
-  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs___pyx_scope_struct__enumerate_path) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7pyrucfs_8backends_6cython_6_rucfs___pyx_scope_struct__enumerate_path) < 0) __PYX_ERR(0, 315, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_7pyrucfs_8backends_6cython_6_rucfs___pyx_scope_struct__enumerate_path.tp_print = 0;
   #endif
@@ -22960,34 +24148,107 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":264
+  /* "pyrucfs/backends/cython/_rucfs.pyx":21
+ *                                             rucfs_path_enum_t, rucfs_path_to,
+ *                                             rucfs_superblock_t)
+ * INODE_DIRECTORY =  rucfs_inode_directory             # <<<<<<<<<<<<<<
+ * INODE_FILE = rucfs_inode_file
+ * INODE_SYMLINK = rucfs_inode_symlink
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_uint8_t(rucfs_inode_directory); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_INODE_DIRECTORY, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":22
+ *                                             rucfs_superblock_t)
+ * INODE_DIRECTORY =  rucfs_inode_directory
+ * INODE_FILE = rucfs_inode_file             # <<<<<<<<<<<<<<
+ * INODE_SYMLINK = rucfs_inode_symlink
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_uint8_t(rucfs_inode_file); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_INODE_FILE, __pyx_t_1) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":23
+ * INODE_DIRECTORY =  rucfs_inode_directory
+ * INODE_FILE = rucfs_inode_file
+ * INODE_SYMLINK = rucfs_inode_symlink             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline str path_to_str(rucfs_path_enum_t* p):
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_uint8_t(rucfs_inode_symlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_INODE_SYMLINK, __pyx_t_1) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":140
+ *         rucfs_inode_t *node
+ *         int own
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.node = <rucfs_inode_t *> PyMem_Malloc(sizeof(rucfs_inode_t))
+ */
+  __pyx_k__7 = rucfs_inode_directory;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":181
+ *         int own
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_= rucfs_inode_directory, uint32_t name_offset = 0, uint32_t item_count = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:
+ *             self.d = <rucfs_inode_directory_t *> PyMem_Malloc(sizeof(rucfs_inode_directory_t))
+ */
+  __pyx_k__10 = rucfs_inode_directory;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":224
+ *         int own   # own this ptr (not from_ptr)
+ * 
+ *     def __cinit__(self, rucfs_inode_type_t type_ = rucfs_inode_directory, uint32_t name_offset = 0, uint32_t ref_inode_offset = 0, bint own = True):             # <<<<<<<<<<<<<<
+ *         if own:   # user created struct
+ *             self._link = <rucfs_inode_symlink_t *> PyMem_Malloc(sizeof(rucfs_inode_symlink_t))
+ */
+  __pyx_k__13 = rucfs_inode_directory;
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":344
  * 
  *     @staticmethod
  *     def load(const uint8_t[::1] data):             # <<<<<<<<<<<<<<
  *         """
  *         keep a refcount to data!
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pyrucfs_8backends_6cython_6_rucfs_7Context_20load, NULL, __pyx_n_s_pyrucfs_backends_cython__rucfs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pyrucfs_8backends_6cython_6_rucfs_7Context_20load, NULL, __pyx_n_s_pyrucfs_backends_cython__rucfs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context->tp_dict, __pyx_n_s_load, __pyx_t_1) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context->tp_dict, __pyx_n_s_load, __pyx_t_1) < 0) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context);
 
-  /* "pyrucfs/backends/cython/_rucfs.pyx":263
+  /* "pyrucfs/backends/cython/_rucfs.pyx":343
  *             PyMem_Free(list_)
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def load(const uint8_t[::1] data):
  *         """
  */
-  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context, __pyx_n_s_load); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_1, (PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context, __pyx_n_s_load); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 343, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context->tp_dict, __pyx_n_s_load, __pyx_t_2) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context->tp_dict, __pyx_n_s_load, __pyx_t_2) < 0) __PYX_ERR(0, 344, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_7pyrucfs_8backends_6cython_6_rucfs_Context);
+
+  /* "pyrucfs/backends/cython/_rucfs.pyx":366
+ * 
+ * cdef rucfs_inode_symlink_t l
+ * symlink = Symlink.from_ptr(&l)             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_2 = ((PyObject *)__pyx_f_7pyrucfs_8backends_6cython_6_rucfs_7Symlink_from_ptr((&__pyx_v_7pyrucfs_8backends_6cython_6_rucfs_l))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 366, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_symlink, __pyx_t_2) < 0) __PYX_ERR(0, 366, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pyrucfs/backends/cython/_rucfs.pyx":1
  * # cython: language_level=3             # <<<<<<<<<<<<<<
@@ -23019,7 +24280,7 @@ if (!__Pyx_RefNanny) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 287, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_2);
@@ -23033,7 +24294,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__37, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 288, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_2);
@@ -23047,7 +24308,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__38, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 289, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__41, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 289, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_2);
@@ -23061,7 +24322,7 @@ if (!__Pyx_RefNanny) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__39, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 292, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__42, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_2);
@@ -23075,7 +24336,7 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__40, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 293, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__43, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 293, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_2);
@@ -26398,6 +27659,44 @@ no_fail:
     return new_mvs;
 }
 
+/* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint8_t(uint8_t value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const uint8_t neg_one = (uint8_t) -1, const_zero = (uint8_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(uint8_t) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(uint8_t) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint8_t) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(uint8_t) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(uint8_t) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(uint8_t),
+                                     little, !is_unsigned);
+    }
+}
+
 /* CIntFromPy */
   static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -26592,6 +27891,398 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
+}
+
+/* CIntFromPy */
+  static CYTHON_INLINE uint8_t __Pyx_PyInt_As_uint8_t(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const uint8_t neg_one = (uint8_t) -1, const_zero = (uint8_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(uint8_t) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(uint8_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (uint8_t) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint8_t) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(uint8_t, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(uint8_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) >= 2 * PyLong_SHIFT) {
+                            return (uint8_t) (((((uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint8_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) >= 3 * PyLong_SHIFT) {
+                            return (uint8_t) (((((((uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint8_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) >= 4 * PyLong_SHIFT) {
+                            return (uint8_t) (((((((((uint8_t)digits[3]) << PyLong_SHIFT) | (uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (uint8_t) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(uint8_t) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint8_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint8_t) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint8_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint8_t) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(uint8_t, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(uint8_t,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(uint8_t) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint8_t) (((uint8_t)-1)*(((((uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(uint8_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint8_t) ((((((uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(uint8_t) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint8_t) (((uint8_t)-1)*(((((((uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint8_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint8_t) ((((((((uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(uint8_t) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint8_t) (((uint8_t)-1)*(((((((((uint8_t)digits[3]) << PyLong_SHIFT) | (uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint8_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint8_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint8_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint8_t) ((((((((((uint8_t)digits[3]) << PyLong_SHIFT) | (uint8_t)digits[2]) << PyLong_SHIFT) | (uint8_t)digits[1]) << PyLong_SHIFT) | (uint8_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(uint8_t) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint8_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint8_t) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint8_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            uint8_t val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (uint8_t) -1;
+        }
+    } else {
+        uint8_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (uint8_t) -1;
+        val = __Pyx_PyInt_As_uint8_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to uint8_t");
+    return (uint8_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to uint8_t");
+    return (uint8_t) -1;
+}
+
+/* CIntFromPy */
+  static CYTHON_INLINE uint32_t __Pyx_PyInt_As_uint32_t(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const uint32_t neg_one = (uint32_t) -1, const_zero = (uint32_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(uint32_t) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(uint32_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (uint32_t) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint32_t) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(uint32_t, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(uint32_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 2 * PyLong_SHIFT) {
+                            return (uint32_t) (((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint32_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 3 * PyLong_SHIFT) {
+                            return (uint32_t) (((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint32_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) >= 4 * PyLong_SHIFT) {
+                            return (uint32_t) (((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (uint32_t) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(uint32_t) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint32_t) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (uint32_t) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(uint32_t, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(uint32_t,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(uint32_t) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(uint32_t) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(uint32_t) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(uint32_t) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((((uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(uint32_t) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint32_t) (((uint32_t)-1)*(((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(uint32_t) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(uint32_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(uint32_t) - 1 > 4 * PyLong_SHIFT) {
+                            return (uint32_t) ((((((((((uint32_t)digits[3]) << PyLong_SHIFT) | (uint32_t)digits[2]) << PyLong_SHIFT) | (uint32_t)digits[1]) << PyLong_SHIFT) | (uint32_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(uint32_t) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(uint32_t) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(uint32_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            uint32_t val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (uint32_t) -1;
+        }
+    } else {
+        uint32_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (uint32_t) -1;
+        val = __Pyx_PyInt_As_uint32_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to uint32_t");
+    return (uint32_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to uint32_t");
+    return (uint32_t) -1;
 }
 
 /* CIntToPy */
