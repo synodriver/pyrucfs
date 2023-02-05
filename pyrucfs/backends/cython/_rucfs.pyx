@@ -4,7 +4,7 @@ cimport cython
 from cpython.mem cimport PyMem_Free, PyMem_Malloc
 from libc.stdint cimport uint8_t, uint32_t
 
-from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path,
+from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path, ok,arguments,data_broken,unsupported,notfound,out_of_memory,
                                             rucfs_errcode_t, rucfs_exist,
                                             rucfs_fclose, rucfs_file_t,
                                             rucfs_fopen, rucfs_inode_directory,
@@ -33,6 +33,22 @@ cdef inline str path_to_str(rucfs_path_enum_t* p):
         return "file"
     elif  p.type == rucfs_inode_symlink:
         return "symlink"
+    else:
+        return "unknown"
+
+cdef inline str check_err(rucfs_errcode_t  err):
+    if err == ok:
+        return "ok"
+    elif err == arguments:
+        return "arguments"
+    elif err == data_broken:
+        return "data_broken"
+    elif err == unsupported:
+        return "unsupported"
+    elif err == notfound:
+        return "notfound"
+    elif err == out_of_memory:
+        return "out_of_memory"
 
 # @cython.internal  # uncomment this to
 @cython.final
@@ -77,8 +93,9 @@ cdef class File:
         return <bytes>self.file.name
 
     cpdef inline close(self):
-        if not rucfs_ok(rucfs_fclose(self.file)):
-            raise IOError
+        cdef rucfs_errcode_t code = rucfs_fclose(self.file)
+        if not rucfs_ok(code):
+            raise IOError(check_err(code))
 
     def __enter__(self):
         return self
@@ -114,10 +131,20 @@ cdef class File:
 cdef class Path:
     cdef rucfs_path_enum_t* path
 
+    def __cinit__(self):
+        self.path = <rucfs_path_enum_t *> PyMem_Malloc(sizeof(rucfs_path_enum_t))
+        if not self.path:
+            raise MemoryError
+
+    def __dealloc__(self):
+        if self.path:
+            PyMem_Free(self.path)
+
+
     @staticmethod
     cdef inline Path from_ptr(rucfs_path_enum_t* path):
         cdef Path self = Path.__new__(Path)
-        self.path = path
+        self.path[0] = path[0] # perform a deepcopy
         return self
 
     @property
@@ -130,6 +157,11 @@ cdef class Path:
         directory or file or symlink
         """
         return self.path.type
+
+    def __str__(self):
+        return f"Path: name = {self.name}, type = {path_to_str(self.path)}"
+
+    __repr__ = __str__
 
 @cython.final
 @cython.freelist(8)
@@ -257,7 +289,9 @@ cdef class Symlink:
 @cython.freelist(8)
 @cython.no_gc
 cdef class Context:
-    cdef rucfs_ctx_t * _ctx
+    cdef:
+        rucfs_ctx_t * _ctx
+        const uint8_t[::1] data
 
     def __cinit__(self):
         self._ctx = <rucfs_ctx_t *> PyMem_Malloc(sizeof(rucfs_ctx_t))
@@ -271,11 +305,11 @@ cdef class Context:
 
     cpdef File fopen(self, const uint8_t[::1] path):
         cdef rucfs_file_t* file
-        cdef rucfs_errcode_t code
+        cdef rucfs_errcode_t code = ok
         with nogil:
             code = rucfs_fopen(self._ctx, <const char *>&path[0], &file)
         if not rucfs_ok(code):
-            raise FileNotFoundError
+            raise IOError(check_err(code))
         return File.from_ptr(file)
 
     cpdef inline Inode open_symlink(self, Symlink link):
@@ -290,30 +324,33 @@ cdef class Context:
             node = rucfs_open_directory(self._ctx, d.d)
         return Inode.from_ptr(node)
 
-    cpdef inline  Inode path_to(self, const uint8_t[::1] path):
+    cpdef inline Inode path_to(self, const uint8_t[::1] path):
         cdef:
             rucfs_inode_t* node
-            rucfs_errcode_t code
+            rucfs_errcode_t code = ok
         with nogil:
             code = rucfs_path_to(self._ctx, <const char *> &path[0], &node)
         if not rucfs_ok(code):
-            raise IOError
+            raise IOError(check_err(code))
         return Inode.from_ptr(node)
 
-    cpdef inline bint exist(self, const uint8_t[::1] path):
+    cpdef inline bint exist(self, const uint8_t[::1] path) except *:
         cdef:
-            rucfs_errcode_t  err
+            rucfs_errcode_t err = ok
             bint code = False
         with nogil:
             code = rucfs_exist(self._ctx, <const char *> &path[0], &err)
         if not rucfs_ok(err):
-            raise IOError
+            raise IOError(check_err(err))
         return code
+
+    def __contains__(self, item):
+        return self.exist(item)
 
     cpdef bytes inode_name(self,  Inode node):
         return  <bytes>rucfs_inode_name(self._ctx, node.node)
 
-    def enumerate_path(self, const uint8_t[::1] path):
+    def enumerate_path(self, const uint8_t[::1] path):  # todo segfault
         """
         path like a/b/c
         :param path:
@@ -322,20 +359,20 @@ cdef class Context:
         cdef size_t size, i
         # count files
         cdef rucfs_path_enum_t* list_
-        cdef rucfs_errcode_t code
+        cdef rucfs_errcode_t code = ok
         with nogil:
             code = rucfs_enumerate_path(self._ctx, <const char *> &path[0], NULL, &size)
         if not rucfs_ok(code):
-            raise IOError
+            raise IOError(check_err(code))
 
         list_ = <rucfs_path_enum_t*>PyMem_Malloc(sizeof(rucfs_path_enum_t) * size)
         if not list_:
             raise MemoryError
         try:
             with nogil:
-                code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)
-                if not rucfs_ok(code):
-                    raise IOError
+                code = rucfs_enumerate_path(self._ctx, <const char *>&path[0], list_, &size)  # must from same thread
+            if not rucfs_ok(code):
+                raise IOError(check_err(code))
             for i in range(size):
                 yield Path.from_ptr( &list_[i])
         finally:
@@ -344,16 +381,17 @@ cdef class Context:
     @staticmethod
     def load(const uint8_t[::1] data):
         """
-        keep a refcount to data!
+        todo! keep a refcount to data! should we do that?
         :param data:
         :return:
         """
         cdef Context self = Context()
-        cdef rucfs_errcode_t code
+        self.data = data
+        cdef rucfs_errcode_t code = ok
         with nogil:
             code = rucfs_load(<uint8_t*>&data[0],self._ctx)
         if not rucfs_ok(code):
-            raise IOError
+            raise IOError(check_err(code))
         return self
 
     @property
