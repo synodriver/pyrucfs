@@ -42,9 +42,7 @@ extensions = [
     Extension(
         "pyrucfs.backends.cython._rucfs",
         ["./rucfs/src/rucfs.c", "pyrucfs/backends/cython/_rucfs.pyx"],
-        include_dirs=["./rucfs/src/"]
-
-        # libraries=libraries,
+        include_dirs=["./rucfs/src/"],
     ),
 ]
 cffi_modules = ["pyrucfs/backends/cffi/build.py:ffibuilder"]
@@ -95,17 +93,17 @@ def main():
 
     dis = get_dis()
     setup(
-        name="python-rsync",
+        name="pyrucfs",
         version=version,
         url="https://github.com/synodriver/pyrucfs",
         packages=packages,
         keywords=["compress", "decompress"],
-        description="python binding for librsync",
+        description="python binding for rucfs",
         long_description_content_type="text/markdown",
         long_description=dis,
         author="synodriver",
         author_email="diguohuangjiajinweijun@gmail.com",
-        python_requires=">=3.6",
+        python_requires=">=3.7",
         setup_requires=setup_requires,
         install_requires=install_requires,
         license="BSD",
@@ -121,6 +119,7 @@ def main():
             "Programming Language :: Python :: 3.8",
             "Programming Language :: Python :: 3.9",
             "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
             "Programming Language :: Python :: Implementation :: CPython",
             "Programming Language :: Python :: Implementation :: PyPy",
         ],

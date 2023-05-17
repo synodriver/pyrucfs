@@ -4,7 +4,9 @@ cimport cython
 from cpython.mem cimport PyMem_Free, PyMem_Malloc
 from libc.stdint cimport uint8_t, uint32_t
 
-from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path, ok,arguments,data_broken,unsupported,notfound,out_of_memory,
+from pyrucfs.backends.cython.rucfs cimport (arguments, data_broken, notfound,
+                                            ok, out_of_memory, rucfs_ctx_t,
+                                            rucfs_enumerate_path,
                                             rucfs_errcode_t, rucfs_exist,
                                             rucfs_fclose, rucfs_file_t,
                                             rucfs_fopen, rucfs_inode_directory,
@@ -17,7 +19,7 @@ from pyrucfs.backends.cython.rucfs cimport (rucfs_ctx_t, rucfs_enumerate_path, o
                                             rucfs_ok, rucfs_open_directory,
                                             rucfs_open_symlink,
                                             rucfs_path_enum_t, rucfs_path_to,
-                                            rucfs_superblock_t)
+                                            rucfs_superblock_t, unsupported)
 
 INODE_DIRECTORY =  rucfs_inode_directory
 INODE_FILE = rucfs_inode_file
@@ -90,7 +92,7 @@ cdef class File:
 
     @property
     def name(self):
-        return <bytes>self.file.name
+        return (<bytes>self.file.name).decode()
 
     cpdef inline close(self):
         cdef rucfs_errcode_t code = rucfs_fclose(self.file)
@@ -149,7 +151,7 @@ cdef class Path:
 
     @property
     def name(self):
-        return <bytes> self.path.name
+        return (<bytes> self.path.name).decode()
 
     @property
     def type(self):
@@ -347,8 +349,8 @@ cdef class Context:
     def __contains__(self, item):
         return self.exist(item)
 
-    cpdef bytes inode_name(self,  Inode node):
-        return  <bytes>rucfs_inode_name(self._ctx, node.node)
+    cpdef str inode_name(self,  Inode node):
+        return  (<bytes>rucfs_inode_name(self._ctx, node.node)).decode()
 
     def enumerate_path(self, const uint8_t[::1] path):  # todo segfault
         """

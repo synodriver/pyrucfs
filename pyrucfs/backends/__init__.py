@@ -8,7 +8,7 @@ impl = platform.python_implementation()
 
 
 def _should_use_cffi() -> bool:
-    ev = os.getenv("RSYNC_USE_CFFI")
+    ev = os.getenv("RUCFS_USE_CFFI")
     if ev is not None:
         return True
     if impl == "CPython":

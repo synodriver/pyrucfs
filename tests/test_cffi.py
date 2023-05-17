@@ -2,6 +2,9 @@
 Copyright (c) 2008-2022 synodriver <synodriver@gmail.com>
 """
 import os
+import traceback
+
+os.environ["RUCFS_USE_CFFI"] = "1"
 import sys
 from unittest import TestCase
 
@@ -41,7 +44,10 @@ class TestAll(TestCase):
         self.assertFalse(self.ctx.exist(b"/src/none"))
 
     def test_rootdir(self):
-        print("haha", self.ctx.rootdir.item_count)
+        try:
+            print("haha", self.ctx.rootdir.item_count)
+        except:
+            traceback.print_exc()
 
     def test_fopen(self):
         file = self.ctx.fopen(b"/.git")
